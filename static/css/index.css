@@ -2,16 +2,25 @@
     background: transparent;
 }
 
+
 #nav-center-logo-menu-social .nav-bg {
     background: linear-gradient(135deg, #111111, #000000);
     background: -webkit-linear-gradient(315deg, #111111, #000000);
-}#header-slogan-border .bg {
+}
+
+#header-slogan-border {
+    background: radial-gradient(circle, #4C7DA6 30%, #FFF5E7 70%);
+    background: -webkit-radial-gradient(circle, #FFF5E7 30%, #4C7DA6 70%);
+}
+
+#header-slogan-border .bg {
     background-image: url('../images/bg-31.jpg');
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
-    opacity: 1;
+    opacity: 0.5;
 }
+
 #desc-center-text {
     background: radial-gradient(circle, #653E23 30%, #4E2D18 70%);
     background: -webkit-radial-gradient(circle, #653E23 30%, #4E2D18 70%);
@@ -23,7 +32,9 @@
     background-position: center;
     background-size: cover;
     opacity: 0.05;
-}#action-text-phone {
+}
+
+#action-text-phone {
     background: #f8f9fb;
 }
 

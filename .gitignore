@@ -1,6 +1,5 @@
 .idea
 *.pyc
-mercyday/settings.py
 venv/
 indexpage/migrations/
 db.sqlite3
