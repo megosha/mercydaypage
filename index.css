@@ -2,14 +2,15 @@
     background: transparent;
 }
 
+
 #nav-center-logo-menu-social .nav-bg {
     background: linear-gradient(135deg, #111111, #000000);
     background: -webkit-linear-gradient(315deg, #111111, #000000);
 }
 
 #header-slogan-border {
-    background: radial-gradient(circle, #4C7DA6 30%, #FFEEE7 70%);
-    background: -webkit-radial-gradient(circle, #FFEEE7 30%, #4C7DA6 70%);
+    background: radial-gradient(circle, #4C7DA6 30%, #FFF5E7 70%);
+    background: -webkit-radial-gradient(circle, #FFF5E7 30%, #4C7DA6 70%);
 }
 
 #header-slogan-border .bg {
@@ -17,11 +18,12 @@
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
-    opacity: 0.47;
+    opacity: 0.5;
 }
+
 #desc-center-text {
-    background: radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);
-    background: -webkit-radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);
+    background: radial-gradient(circle, #653E23 30%, #4E2D18 70%);
+    background: -webkit-radial-gradient(circle, #653E23 30%, #4E2D18 70%);
 }
 
 #desc-center-text .bg {
@@ -29,8 +31,10 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    opacity: 0.03;
-}#action-text-phone {
+    opacity: 0.05;
+}
+
+#action-text-phone {
     background: #f8f9fb;
 }
 
@@ -41,10 +45,5 @@
     background-repeat: no-repeat;
     -webkit-background-repeat: no-repeat;
     background-position: center center;
-    opacity: 0.85;
-}
-
-#footer-logo-share-subscribe{
-    background-color: #4C7DA6;
-;
+    opacity: 0.75;
 }
