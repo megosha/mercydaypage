@@ -19,17 +19,23 @@
     background-size: cover;
     opacity: 0.47;
 }
-#desc-center-text {
-    background: radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);
-    background: -webkit-radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);
-}
+/*#desc-center-text {*/
+/*    background: radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);*/
+/*    background: -webkit-radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);*/
+/*}*/
+
+/*#desc-center-text {*/
+/*    background: radial-gradient(circle, #4C7DA6 1%, #E9F5FF 80%);*/
+/*    background: -webkit-radial-gradient(circle, #E9F5FF 1%, #4C7DA6 80%);*/
+/*}*/
 
 #desc-center-text .bg {
     background-image: url('../images/bg-24.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    opacity: 0.03;
+    opacity: 0.1;
+    /*opacity: 0.47;*/
 }#action-text-phone {
     background: #f8f9fb;
 }
@@ -47,4 +53,28 @@
 #footer-logo-share-subscribe{
     background-color: #4C7DA6;
 ;
+}
+
+#benefit-center-text-4col {
+    background: radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);
+    background: -webkit-radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);
+}
+#benefit-center-text-4col .bg{
+    background-image: url('../images/bg-23.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.05;
+}
+
+#gallery-list-2col-mix {
+    background: radial-gradient(circle, #E9F5FF 30%, #E9F5FF 70%);
+    background: -webkit-radial-gradient(circle, #E9F5FF 30%, #E9F5FF 70%);
+}
+#gallery-list-2col-mix .bg{
+    background-image: url('../images/bg-25.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.05;
 }
