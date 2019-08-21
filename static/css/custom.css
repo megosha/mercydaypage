@@ -16,16 +16,20 @@ border-color: #f3f3f3;
 background-color: #f3f3f3;
 }
 section.light, .nav-bg.light, .bg-test.light, .nb-off-canvas.light, header.light, .light .sub-menu, footer.light, .modal-content.light, .light .mega-menu-container, .off-canvas-overlay.light {
-background-color: #e9f5ff;
+background-color: #c5ddff;
+/*background-color: #e9f5ff;*/
 }
 .dark .light .dropdown-menu, .light .dropdown-menu {
-background-color: #e9f5ff;
+background-color: #c5ddff;
+	/*background-color: #e9f5ff;*/
 }
 .light-page #preloader {
-background-color: #e9f5ff;
+background-color: #c5ddff;
+/*background-color: #e9f5ff;*/
 }
 .light-page {
-background-color: #e9f5ff;
+background-color: #c5ddff;
+	/*background-color: #e9f5ff;*/
 }
 .light-page #preloader > div, .light-page #preloader > div > *, .light-page #preloader > div:before, .light-page #preloader > div:after {
 border-color: #888888;
@@ -71,22 +75,28 @@ border-color: #777777;
 border-color: #777777;
 }
 .light .dark .step-line-ltc, .dark .step-line-ltc {
-border-color: #edf8ff;
+background-color: #c5ddff;
+	/*border-color: #edf8ff;*/
 }
 .light .dark .step-line-rtc, .dark .step-line-rtc {
-border-color: #edf8ff;
+background-color: #c5ddff;
+	/*border-color: #edf8ff;*/
 }
 .light .dark .step-line-ctl, .dark .step-line-ctl {
-border-color: #edf8ff;
+background-color: #c5ddff;
+	/*border-color: #edf8ff;*/
 }
 .light .dark .step-line-ctr, .dark .step-line-ctr {
-border-color: #edf8ff;
+background-color: #c5ddff;
+	/*border-color: #edf8ff;*/
 }
 .light .dark  .step-line-start:before, .dark  .step-line-start:before {
-border-color: #edf8ff;
+background-color: #c5ddff;
+	/*border-color: #edf8ff;*/
 }
 .light .dark  .step-line-end:before, .dark  .step-line-end:before {
-border-color: #edf8ff;
+background-color: #c5ddff;
+	/*border-color: #edf8ff;*/
 }
 .light .dark a:not(.btn):not(.gallery-box):not(.goodshare), .dark a:not(.btn):not(.gallery-box):not(.goodshare) {
 color: #ffffff;
@@ -226,7 +236,7 @@ color: #444444!important;
 color: #000000;
 }
 .dark .light mark, .light mark {
-background-color: #ffeee7;
+background-color: #fdece1;
 }
 .dark .light h1, .light h1 {
 color: #222222;

@@ -47,10 +47,10 @@
                 <div class="row flex-md-vmiddle">
                     <div class="">
                         <div class="border-box padding-box mb-100 mt-100" style="border-color:#222;">
-                            <h1 class="my-5"><span class="text-uppercase"><strong>ДЕНЬ МИЛОСЕРДИЯ</strong><br>БЛАГОТВОРИТЕЛЬНЫЙ ПРОЕКТ</span>
+                            <h1 class="my-5"><span class="text-uppercase">{{ block1.title|safe }}</span>
                             </h1>
                         </div>
-                        <p class="">Наше призвание - протягивать руку помощи</p>
+                        <p class="h4">{{ block1.content }}</p>
                     </div>
                 </div>
             </div>
@@ -62,16 +62,11 @@
                     <div class="col-md-6 col-md-offset-3">
                         <h2 class="mb-25" data-aos="fade" data-aos-easing="linear" data-aos-duration="500"
                             data-aos-delay="0" data-aos-once="true"><span
-                                class="text-uppercase"><strong>Our story</strong></span></h2>
+                                class="text-uppercase"><strong>{{ block2.title }}</strong></span></h2>
                         <h3 class="mb-75" data-aos="fade" data-aos-easing="linear" data-aos-duration="500"
-                            data-aos-delay="0" data-aos-once="true"><em>Since 1914</em></h3>
+                            data-aos-delay="0" data-aos-once="true"><em>{{ block2.subtitle }}</em></h3>
                         <p data-aos="fade" data-aos-easing="none" data-aos-duration="500" data-aos-delay="100" data-aos-once="true">
-                            So, what is the secret of successful template design? First of all, it is its friendliness –
-                            both for the template’s owner and for his or her future targeted audience. UX and UI are not
-                            just empty phrases for us. It is very important for us that the user could understand
-                            correctly the message your project’s trying to say to him or her. But, correct giving of the
-                            information is just a half of success. Emotions that causes your project in visitor are no
-                            less important ticket to success
+                            {{ block2.content }}
                         </p>
                     </div>
 

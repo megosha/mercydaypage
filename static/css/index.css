@@ -8,8 +8,8 @@
 }
 
 #header-slogan-border {
-    background: radial-gradient(circle, #4C7DA6 30%, #FFEEE7 70%);
-    background: -webkit-radial-gradient(circle, #FFEEE7 30%, #4C7DA6 70%);
+    background: radial-gradient(circle, #536188 30%, #FFEEE7 70%);
+    background: -webkit-radial-gradient(circle, #FFEEE7 30%, #536188 70%);
 }
 
 #header-slogan-border .bg {
@@ -19,10 +19,10 @@
     background-size: cover;
     opacity: 0.47;
 }
-/*#desc-center-text {*/
-/*    background: radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);*/
-/*    background: -webkit-radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);*/
-/*}*/
+#desc-center-text {
+    background: radial-gradient(circle, #c5ddff 30%, #c5ddff 70%);
+    background: -webkit-radial-gradient(circle, #c5ddff 30%, #c5ddff 70%);
+}
 
 /*#desc-center-text {*/
 /*    background: radial-gradient(circle, #4C7DA6 1%, #E9F5FF 80%);*/
@@ -30,14 +30,17 @@
 /*}*/
 
 #desc-center-text .bg {
-    background-image: url('../images/bg-24.jpg');
+    background-image: url('../images/bg-24.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    opacity: 0.1;
+    opacity: 0.07;
     /*opacity: 0.47;*/
+
 }#action-text-phone {
-    background: #f8f9fb;
+    /*background: #f8f9fb;*/
+    background: radial-gradient(circle, #FFEEE7 30%, #FFEEE7 70%);
+    background: -webkit-radial-gradient(circle, #FFEEE7 30%, #FFEEE7 70%);
 }
 
 #action-text-phone .bg {
@@ -46,18 +49,19 @@
     -webkit-background-size: cover;
     background-repeat: no-repeat;
     -webkit-background-repeat: no-repeat;
+    /*background-position: center center;*/
     background-position: center center;
-    opacity: 0.85;
+    opacity: 0.7
 }
 
 #footer-logo-share-subscribe{
-    background-color: #4C7DA6;
+    background-color: #536188;
 ;
 }
 
 #benefit-center-text-4col {
-    background: radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);
-    background: -webkit-radial-gradient(circle, #4C7DA6 30%, #4C7DA6 70%);
+    background: radial-gradient(circle, #536188 30%, #536188 70%);
+    background: -webkit-radial-gradient(circle, #536188 30%, #536188 70%);
 }
 #benefit-center-text-4col .bg{
     background-image: url('../images/bg-23.jpg');
@@ -68,8 +72,8 @@
 }
 
 #gallery-list-2col-mix {
-    background: radial-gradient(circle, #E9F5FF 30%, #E9F5FF 70%);
-    background: -webkit-radial-gradient(circle, #E9F5FF 30%, #E9F5FF 70%);
+    background: radial-gradient(circle, #c5ddff 30%, #c5ddff 70%);
+    background: -webkit-radial-gradient(circle, #c5ddff 30%, #c5ddff 70%);
 }
 #gallery-list-2col-mix .bg{
     background-image: url('../images/bg-25.png');
