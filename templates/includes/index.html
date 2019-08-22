@@ -11,36 +11,36 @@
             <div class="bounce3"></div>
         </div>
     </div>
-{#    <nav id="nav-center-logo-menu-social" class="navbar navbar-fixed-top dark">#}
-{#        <div class="container">#}
-{#            <div class="navbar-header">#}
-{#                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"><span#}
-{#                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>#}
-{#                <div class="navbar-brand"><img src="../../static/images/logo2-light.png"#}
-{#                                               srcset="../../static/images/logo2-light@2x.png 2x" alt="Your logo"#}
-{#                                               class=""></div>#}
-{#            </div>#}
-{#            <div id="navbar" class="navbar-collapse collapse">#}
-{#                <ul class="nav navbar-nav navbar-center">#}
-{#                    <li class=""><a href="#"><span>About</span></a></li>#}
-{#                    <li class=""><a href="#"><span>Screenshots</span></a></li>#}
-{#                    <li class=""><a href="#"><span>Stories</span></a></li>#}
-{#                </ul>#}
-{#                <ul class="social-list navbar-right">#}
-{#                    <li class="">#}
-{#                        <a href="#"><i class="icon-dribbble icon-size-m"></i></a>#}
-{#                    </li>#}
-{#                    <li class="">#}
-{#                        <a href="#"><i class="icon-behance icon-size-m"></i></a>#}
-{#                    </li>#}
-{#                    <li class="">#}
-{#                        <a href="#"><i class="icon-envelope-o icon-size-m"></i></a>#}
-{#                    </li>#}
-{#                </ul>#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="nav-bg dark"></div>#}
-{#    </nav>#}
+    {#    <nav id="nav-center-logo-menu-social" class="navbar navbar-fixed-top dark">#}
+    {#        <div class="container">#}
+    {#            <div class="navbar-header">#}
+    {#                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"><span#}
+    {#                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>#}
+    {#                <div class="navbar-brand"><img src="../../static/images/logo2-light.png"#}
+    {#                                               srcset="../../static/images/logo2-light@2x.png 2x" alt="Your logo"#}
+    {#                                               class=""></div>#}
+    {#            </div>#}
+    {#            <div id="navbar" class="navbar-collapse collapse">#}
+    {#                <ul class="nav navbar-nav navbar-center">#}
+    {#                    <li class=""><a href="#"><span>About</span></a></li>#}
+    {#                    <li class=""><a href="#"><span>Screenshots</span></a></li>#}
+    {#                    <li class=""><a href="#"><span>Stories</span></a></li>#}
+    {#                </ul>#}
+    {#                <ul class="social-list navbar-right">#}
+    {#                    <li class="">#}
+    {#                        <a href="#"><i class="icon-dribbble icon-size-m"></i></a>#}
+    {#                    </li>#}
+    {#                    <li class="">#}
+    {#                        <a href="#"><i class="icon-behance icon-size-m"></i></a>#}
+    {#                    </li>#}
+    {#                    <li class="">#}
+    {#                        <a href="#"><i class="icon-envelope-o icon-size-m"></i></a>#}
+    {#                    </li>#}
+    {#                </ul>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#        <div class="nav-bg dark"></div>#}
+    {#    </nav>#}
     <div id="wrap">
         <header id="header-slogan-border" class="pt-150 pb-150 text-center light">
             <div class="container">
@@ -65,7 +65,8 @@
                                 class="text-uppercase"><strong>{{ block2.title }}</strong></span></h2>
                         <h3 class="mb-75" data-aos="fade" data-aos-easing="linear" data-aos-duration="500"
                             data-aos-delay="0" data-aos-once="true"><em>{{ block2.subtitle }}</em></h3>
-                        <p data-aos="fade" data-aos-easing="none" data-aos-duration="500" data-aos-delay="100" data-aos-once="true">
+                        <p data-aos="fade" data-aos-easing="none" data-aos-duration="500" data-aos-delay="100"
+                           data-aos-once="true">
                             {{ block2.content }}
                         </p>
                     </div>
@@ -77,51 +78,55 @@
         <section id="benefit-center-text-4col" class="pt-150 pb-150 text-center dark">
             <div class="container">
                 <h2 data-aos="fade" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0"
-                    data-aos-once="true">Just few easy steps</h2>
+                    data-aos-once="true">{{ block3.title }}</h2>
                 <p class="compressed-box-50 mb-75" data-aos="fade" data-aos-easing="none" data-aos-duration="500"
-                   data-aos-delay="0" data-aos-once="true">In the tumultuous business of cutting-in and attending to a
-                    whale, there is much running backwards and forwards among the crew. Now hands are wanted here, and
-                    then again hands are wanted there.</p>
+                   data-aos-delay="0" data-aos-once="true">{{ block3.content }}</p>
                 <div class="row">
+                    {% for item in block3.item.all %}
+                    {% if item.order == 1 %}
                     <div class="col-md-3">
                         <div class="card card-simple" data-aos="stretch-left" data-aos-easing="linear"
                              data-aos-duration="500" data-aos-delay="0" data-aos-once="true">
-                            <i class="card-icon icon-size-xl icon-pencil-ruler2 icon-color mb-25"></i>
-                            <h3 class="">1. Flexibility</h3>
-                            <p class="mb-25">The given template is armed with the number of settings, so you can easily
-                                adapt it ...
+                            <i class="card-icon icon-size-xl icon-register icon-color mb-25"></i>
+                            <h3 class="">{{ item.order }}. {{ item.title }}</h3>
+                            <p class="mb-25">{{ item.content }}
                             </p>
                         </div>
                     </div>
+                    {% endif %}
+                    {% if item.order == 2 %}
                     <div class="col-md-3">
                         <div class="card card-simple" data-aos="stretch-left" data-aos-easing="linear"
                              data-aos-duration="500" data-aos-delay="0" data-aos-once="true">
-                            <i class="card-icon icon-size-xl icon-window icon-color mb-25"></i>
-                            <h3 class="">2. Pure design</h3>
-                            <p class="mb-25">No fluff. Nothing should lead the visitor away from the main essence of
-                                website.</p>
+                            <i class="card-icon icon-size-xl icon-music icon-color mb-25"></i>
+                            <h3 class="">{{ item.order }}. {{ item.title }}</h3>
+                            <p class="mb-25">{{ item.content }}</p>
                         </div>
                     </div>
+                        {% endif %}
+                        {% if item.order == 3 %}
                     <div class="col-md-3">
                         <div class="card card-simple" data-aos="stretch-right" data-aos-easing="linear"
                              data-aos-duration="500" data-aos-delay="0" data-aos-once="true">
-                            <i class="card-icon icon-size-xl icon-heart icon-color mb-25"></i>
-                            <h3 class="">3. The Heart</h3>
-                            <p class="mb-25">So, what is the secret of successful template design? First of all, it is
-                                its ... </p>
+                            <i class="card-icon icon-size-xl icon-user icon-color mb-25"></i>
+                            <h3 class="">{{ item.order }}. {{ item.title }}</h3>
+                            <p class="mb-25">{{ item.content }}</p>
                         </div>
                     </div>
+                        {% endif %}
+                        {% if item.order == 4 %}
                     <div class="col-md-3">
                         <div class="card card-simple" data-aos="stretch-right" data-aos-easing="linear"
                              data-aos-duration="500" data-aos-delay="0" data-aos-once="true">
-                            <i class="card-icon icon-size-xl icon-wallet icon-color mb-25"></i>
-                            <h3 class="">4. New level</h3>
-                            <p class="mb-25">Do you want to create a new project or to update the previous one? So, this
-                                ... </p>
+                            <i class="card-icon icon-size-xl icon-gift2 icon-color mb-25"></i>
+                            <h3 class="">{{ item.order }}. {{ item.title }}</h3>
+                            <p class="mb-25">{{ item.content }}</p>
                         </div>
                     </div>
+                        {% endif %}
+                {% endfor %}
                 </div>
-                <a href="#" class="btn btn-primary mt-50"><span><strong>Start</strong> today!</span></a>
+                <a href="#" class="btn btn-primary mt-50"><span><strong>Зарегистрироваться</strong></span></a>
             </div>
             <div class="bg"></div>
         </section>
