@@ -11,38 +11,39 @@
             <div class="bounce3"></div>
         </div>
     </div>
-    {#    <nav id="nav-center-logo-menu-social" class="navbar navbar-fixed-top dark">#}
-    {#        <div class="container">#}
-    {#            <div class="navbar-header">#}
-    {#                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"><span#}
-    {#                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>#}
-    {#                <div class="navbar-brand"><img src="../../static/images/logo2-light.png"#}
-    {#                                               srcset="../../static/images/logo2-light@2x.png 2x" alt="Your logo"#}
-    {#                                               class=""></div>#}
-    {#            </div>#}
-    {#            <div id="navbar" class="navbar-collapse collapse">#}
-    {#                <ul class="nav navbar-nav navbar-center">#}
-    {#                    <li class=""><a href="#"><span>About</span></a></li>#}
-    {#                    <li class=""><a href="#"><span>Screenshots</span></a></li>#}
-    {#                    <li class=""><a href="#"><span>Stories</span></a></li>#}
-    {#                </ul>#}
-    {#                <ul class="social-list navbar-right">#}
-    {#                    <li class="">#}
-    {#                        <a href="#"><i class="icon-dribbble icon-size-m"></i></a>#}
-    {#                    </li>#}
-    {#                    <li class="">#}
-    {#                        <a href="#"><i class="icon-behance icon-size-m"></i></a>#}
-    {#                    </li>#}
-    {#                    <li class="">#}
-    {#                        <a href="#"><i class="icon-envelope-o icon-size-m"></i></a>#}
-    {#                    </li>#}
-    {#                </ul>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#        <div class="nav-bg dark"></div>#}
-    {#    </nav>#}
+        <nav id="nav-center-logo-menu-social" class="navbar navbar-fixed-top dark">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"><span
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <div class="navbar-brand"><img src="../../static/images/logo2-light.png"
+                                                   srcset="../../static/images/logo2-light@2x.png 2x" alt="Your logo"
+                                                   class=""></div>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-center">
+                        <li class=""><a href="#"><span>О проекте</span></a></li>
+                        <li class=""><a href="#"><span>Программа</span></a></li>
+                        <li class=""><a href="#"><span>Контакты</span></a></li>
+                        <li class=""><a href="#"><span>Галерея</span></a></li>
+                    </ul>
+{#                    <ul class="social-list navbar-right">#}
+{#                        <li class="">#}
+{#                            <a href="#"><i class="icon-dribbble icon-size-m"></i></a>#}
+{#                        </li>#}
+{#                        <li class="">#}
+{#                            <a href="#"><i class="icon-behance icon-size-m"></i></a>#}
+{#                        </li>#}
+{#                        <li class="">#}
+{#                            <a href="#"><i class="icon-envelope-o icon-size-m"></i></a>#}
+{#                        </li>#}
+{#                    </ul>#}
+                </div>
+            </div>
+            <div class="nav-bg dark"></div>
+        </nav>
     <div id="wrap">
-        <header id="header-slogan-border" class="pt-150 pb-150 text-center light">
+        <header id="header-slogan-border" class="pt-150 pb-150 text-center light" >
             <div class="container">
                 <div class="row flex-md-vmiddle">
                     <div class="">
@@ -54,9 +55,9 @@
                     </div>
                 </div>
             </div>
-            <div class="bg"></div>
+            <div class="bg" style="background-image: url('/static/images/bg-31.jpg');"></div>
         </header>
-        <section id="desc-center-text" class="pt-125 pb-150 light text-center">
+        <section id="desc-center-text" class="pt-125 pb-150 dark text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
@@ -73,9 +74,9 @@
 
                 </div>
             </div>
-            <div class="bg"></div>
+            <div class="bg" ></div>
         </section>
-        <section id="benefit-center-text-4col" class="pt-150 pb-150 text-center dark">
+        <section id="benefit-center-text-4col" class="pt-150 pb-150 text-center light">
             <div class="container">
                 <h2 data-aos="fade" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0"
                     data-aos-once="true">{{ block3.title }}</h2>
@@ -128,32 +129,33 @@
                 </div>
                 <a href="#" class="btn btn-primary mt-50"><span><strong>Зарегистрироваться</strong></span></a>
             </div>
-            <div class="bg"></div>
+            <div class="bg" style="background-image: url('/static/images/bg-24.png');"></div>
         </section>
         <section id="action-text-phone" class="pt-100 pb-100 light">
             <div class="container">
                 <div class="row">
+                    <div class="col-md-1"></div>
                     <div class="col-md-4">
                         <h2 data-aos="stretch-left" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                            data-aos-delay="0">We are waiting for your call</h2>
+                            data-aos-delay="0">{{ block4.title }}</h2>
                     </div>
-                    <div class="col-md-8 text-md-right">
-                        <h1 data-aos="stretch-right" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
+                    <div class="col-md-7 text-md-right">
+                        <h4 data-aos="stretch-right" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
                             data-aos-delay="0">
-                            <mark>+1(890)1321312</mark>
-                        </h1>
+                            <mark class="phone"><a href="tel:{{ block4.content }}">{{ block4.content }}</a></mark>
+                        </h4>
                     </div>
                 </div>
             </div>
             <div class="bg parallax-bg skrollable-before" data-top-bottom="transform:translate3d(0px, 25%, 0px)"
-                 data-bottom-top="transform:translate3d(0px, -25%, 0px)"></div>
+                 data-bottom-top="transform:translate3d(0px, -25%, 0px)"  style="background-image: url('/static/images/bg-6.jpg');"></div>
         </section>
         <section id="gallery-list-2col-mix" class="pt-100 pb-100 text-center light">
             <div class="container">
                 <h3 data-aos="fade" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                    data-aos-delay="0">Gallery</h3>
+                    data-aos-delay="0">{{ block5.title }}</h3>
                 <h2 class="mb-75" data-aos="fade" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                    data-aos-delay="0"><strong>Students works</strong></h2>
+                    data-aos-delay="0"><strong>{{ block5.subtitle }}</strong></h2>
                 <div class="row gallery">
                     <div class="col-md-6">
                         <a href="static/images/screen-29.jpg" class="gallery-box" data-aos="stretch-left"
@@ -193,10 +195,10 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="btn btn-default mt-75"><span>Older works</span><i
-                        class="icon-position-right icon-size-m icon-arrow-right"></i></a>
+{#                <a href="#" class="btn btn-default mt-75"><span>Older works</span><i#}
+{#                        class="icon-position-right icon-size-m icon-arrow-right"></i></a>#}
             </div>
-            <div class="bg"></div>
+            <div class="bg" style="background-image: url('/static/images/bg-24.png');"></div>
         </section>
         <footer id="footer-logo-share-subscribe" class="dark pt-100 pb-100">
             <div class="container">
