@@ -13,11 +13,11 @@
     </div>
         <nav id="nav-center-logo-menu-social" class="navbar navbar-fixed-top dark">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header" style="position: absolute; ">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"><span
                             class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     <div class="navbar-brand"><img src="../../static/images/logo2-light.png"
-                                                   srcset="../../static/images/logo2-light@2x.png 2x" alt="Your logo"
+                                                   alt="Your logo" height="100px"
                                                    class=""></div>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bg" style="background-image: url('/static/images/bg-31.jpg');"></div>
+            <div class="bg" {% if block1.picture %}style="background-image: url('/static/{{ block1.picture.url }}');"{% endif %}></div>
         </header>
         <section id="desc-center-text" class="pt-125 pb-150 dark text-center">
             <div class="container">
@@ -74,7 +74,7 @@
 
                 </div>
             </div>
-            <div class="bg" ></div>
+            <div class="bg" {% if block2.picture %}style="background-image: url('/static/{{ block2.picture.url }}');"{% endif %}></div>
         </section>
         <section id="benefit-center-text-4col" class="pt-150 pb-150 text-center light">
             <div class="container">
@@ -129,7 +129,7 @@
                 </div>
                 <a href="#" class="btn btn-primary mt-50"><span><strong>Зарегистрироваться</strong></span></a>
             </div>
-            <div class="bg" style="background-image: url('/static/images/bg-24.png');"></div>
+            <div class="bg" {% if block3.picture %}style="background-image: url('/static/{{ block3.picture.url }}');"{% endif %}></div>
         </section>
         <section id="action-text-phone" class="pt-100 pb-100 light">
             <div class="container">
@@ -148,7 +148,7 @@
                 </div>
             </div>
             <div class="bg parallax-bg skrollable-before" data-top-bottom="transform:translate3d(0px, 25%, 0px)"
-                 data-bottom-top="transform:translate3d(0px, -25%, 0px)"  style="background-image: url('/static/images/bg-6.jpg');"></div>
+                 data-bottom-top="transform:translate3d(0px, -25%, 0px)"  {% if block4.picture %}style="background-image: url('/static/{{ block4.picture.url }}');"{% endif %}></div>
         </section>
         <section id="gallery-list-2col-mix" class="pt-100 pb-100 text-center light">
             <div class="container">
@@ -198,7 +198,7 @@
 {#                <a href="#" class="btn btn-default mt-75"><span>Older works</span><i#}
 {#                        class="icon-position-right icon-size-m icon-arrow-right"></i></a>#}
             </div>
-            <div class="bg" style="background-image: url('/static/images/bg-24.png');"></div>
+            <div class="bg" {% if block5.picture %} style="background-image: url('/static/{{ block5.picture.url }}');"{% endif %}></div>
         </section>
         <footer id="footer-logo-share-subscribe" class="dark pt-100 pb-100">
             <div class="container">

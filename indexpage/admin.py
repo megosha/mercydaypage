@@ -4,12 +4,12 @@ from indexpage import models
 
 # Register your models here.
 class BlockAdmin(admin.ModelAdmin):
-    list_display = ['order', 'title', 'subtitle']
+    list_display = ['order', 'title', 'subtitle', 'picture']
     search_fields = ['order', 'title', 'subtitle', 'content']
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ['order', 'title']
+    list_display = ['order', 'title', 'picture']
     search_fields = ['order', 'title', 'content']
 
 

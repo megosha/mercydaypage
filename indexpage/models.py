@@ -8,7 +8,7 @@ class Block(models.Model):
     title = models.TextField(verbose_name="Заголовок (блока)", default='', blank=True, null=True)
     subtitle = models.TextField(verbose_name="Подзаголовок", default='', blank=True, null=True)
     content = models.TextField(verbose_name="Основной текст", default='', blank=True, null=True)
-    picture = models.TextField(verbose_name="Фоновое изображение", default='', blank=True, null=True)
+    picture = models.FileField(verbose_name="Фоновое изображение", default='', blank=True, null=True)
     item = models.ManyToManyField('Item', verbose_name="Элемент (списка, картинка)", blank=True)
 
     class Meta:
