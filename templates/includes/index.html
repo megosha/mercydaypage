@@ -13,19 +13,29 @@
     </div>
         <nav id="nav-center-logo-menu-social" class="navbar navbar-fixed-top dark">
             <div class="container">
-                <div class="navbar-header" style="position: absolute; ">
+                <div class="navbar-header" style="position: absolute;  left:40px">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"><span
                             class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <div class="navbar-brand"><img src="../../static/images/logo2-light.png"
+                    <div class="navbar-brand"><a href="#"><img src="../../static/images/logo2-light.png"
                                                    alt="Your logo" height="100px"
-                                                   class=""></div>
+                                                   class=""></a> </div>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-center">
-                        <li class=""><a href="#"><span>О проекте</span></a></li>
-                        <li class=""><a href="#"><span>Программа</span></a></li>
-                        <li class=""><a href="#"><span>Контакты</span></a></li>
-                        <li class=""><a href="#"><span>Галерея</span></a></li>
+                        {%  for item in navblock.item.all %}
+                            {% if item.order == 1 %}
+                                <li class=""><a href="#desc-center-text"><span>{{ item.title }}</span></a></li>
+                            {% endif %}
+                            {% if item.order == 2 %}
+                                <li class=""><a href="#benefit-center-text-4col"><span>{{ item.title }}</span></a></li>
+                            {% endif %}
+                            {% if item.order == 3 %}
+                                <li class=""><a href="#action-text-phone"><span>{{ item.title }}</span></a></li>
+                            {% endif %}
+                            {% if item.order == 4 %}
+                                <li class=""><a href="#gallery-list-2col-mix"><span>{{ item.title }}</span></a></li>
+                            {% endif %}
+                        {% endfor %}
                     </ul>
 {#                    <ul class="social-list navbar-right">#}
 {#                        <li class="">#}

@@ -4,9 +4,9 @@ from django.db import models
 # Create your models here.
 
 class Block(models.Model):
-    order = models.SmallIntegerField(verbose_name="Порядок отображения", default=0, blank=True, null=True)
+    order = models.SmallIntegerField(verbose_name="Порядок отображения", default=0, blank=True, null=True, unique=True)
     title = models.TextField(verbose_name="Заголовок (блока)", default='', blank=True, null=True)
-    subtitle = models.TextField(verbose_name="Подзаголовок", default='', blank=True, null=True)
+    subtitle = models.CharField(max_length=255, verbose_name="Подзаголовок", default='', blank=True, null=True)
     content = models.TextField(verbose_name="Основной текст", default='', blank=True, null=True)
     picture = models.FileField(verbose_name="Фоновое изображение", default='', blank=True, null=True)
     item = models.ManyToManyField('Item', verbose_name="Элемент (списка, картинка)", blank=True)
@@ -14,6 +14,7 @@ class Block(models.Model):
     class Meta:
         verbose_name = "Блок"
         verbose_name_plural = "Блоки"
+        #unique_together = (('item', 'item__order'),)
 
 
 class Item(models.Model):

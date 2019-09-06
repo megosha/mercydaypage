@@ -4,13 +4,21 @@ from indexpage import models
 
 # Register your models here.
 class BlockAdmin(admin.ModelAdmin):
-    list_display = ['order', 'title', 'subtitle', 'picture']
-    search_fields = ['order', 'title', 'subtitle', 'content']
+    list_display = ['order', 'title', 'subtitle', 'picture', 'content']
+    list_display_links = ['order', 'title']
+    list_editable = ['subtitle', 'content']
+    list_filter = ['picture']
+    search_fields = ['title', 'subtitle']
+    save_on_top = True
+
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ['order', 'title', 'picture']
+    list_display = ['title', 'order', 'content']
     search_fields = ['order', 'title', 'content']
+    list_display_links = ['title']
+    list_editable = ['order', 'content']
+    save_on_top = True
 
 
 class SettingsAdmin(admin.ModelAdmin):
