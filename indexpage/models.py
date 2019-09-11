@@ -11,6 +11,9 @@ class Block(models.Model):
     picture = models.FileField(verbose_name="Фоновое изображение", default='', blank=True, null=True)
     item = models.ManyToManyField('Item', verbose_name="Элемент (списка, картинка)", blank=True)
 
+    def __str__(self):
+        return f"№: {self.order}, Имя: {self.title}"
+
     class Meta:
         verbose_name = "Блок"
         verbose_name_plural = "Блоки"
@@ -22,6 +25,9 @@ class Item(models.Model):
     picture = models.FileField(verbose_name="Картинка/фото", default='', blank=True, null=True)
     title = models.TextField(verbose_name="Заголовок (элемента)", default='', blank=True, null=True)
     content = models.TextField(verbose_name="Основной текст", default='', blank=True, null=True)
+
+    def __str__(self):
+        return f"№: {self.order}, Имя: {self.title}"
 
     class Meta:
         verbose_name = "Элемент"

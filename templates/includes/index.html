@@ -23,17 +23,8 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-center">
                         {%  for item in navblock.item.all %}
-                            {% if item.order == 1 %}
-                                <li class=""><a href="#desc-center-text"><span>{{ item.title }}</span></a></li>
-                            {% endif %}
-                            {% if item.order == 2 %}
-                                <li class=""><a href="#benefit-center-text-4col"><span>{{ item.title }}</span></a></li>
-                            {% endif %}
-                            {% if item.order == 3 %}
-                                <li class=""><a href="#action-text-phone"><span>{{ item.title }}</span></a></li>
-                            {% endif %}
-                            {% if item.order == 4 %}
-                                <li class=""><a href="#gallery-list-2col-mix"><span>{{ item.title }}</span></a></li>
+                            {% if item.order != 0 %}
+                                <li class=""><a href="#{{ item.content }}"><span>{{ item.title }}</span></a></li>
                             {% endif %}
                         {% endfor %}
                     </ul>
@@ -167,43 +158,71 @@
                 <h2 class="mb-75" data-aos="fade" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
                     data-aos-delay="0"><strong>{{ block5.subtitle }}</strong></h2>
                 <div class="row gallery">
-                    <div class="col-md-6">
-                        <a href="static/images/screen-29.jpg" class="gallery-box" data-aos="stretch-left"
-                           data-aos-easing="none" data-aos-once="true" data-aos-duration="500" data-aos-delay="0">
-                            <i class="icon icon-size-m icon-plus"></i>
-                            <span class="caption">Gallery item with zoom option</span>
-                            <img src="static/images/screen-29.jpg" alt="screen">
-                        </a>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="https://www.google.com.ua" target="_blank" class="gallery-box external"
-                           data-aos="stretch-right" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                           data-aos-delay="0">
-                            <i class="icon icon-size-m icon-link"></i>
-                            <span class="caption">Item with external link</span>
-                            <img src="static/images/screen-30.jpg" alt="screen">
-                        </a>
-                        <div class="row">
                             <div class="col-md-6">
-                                <a href="static/images/screen-31.jpg" class="gallery-box" data-aos="stretch-left"
-                                   data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                                   data-aos-delay="0">
+                                <a href="static/{{ photo1.picture.url }}" class="gallery-box" data-aos="stretch-left"
+                                   data-aos-easing="none" data-aos-once="true" data-aos-duration="500" data-aos-delay="0">
                                     <i class="icon icon-size-m icon-plus"></i>
-                                    <span class="caption">Gallery item with zoom option</span>
-                                    <img src="static/images/screen-31.jpg" alt="screen">
+                                    <span class="caption">{{ photo1.title }}</span>
+                                    <img src="static/{{ photo1.picture.url }}" alt="screen">
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="https://vimeo.com/123395658" class="gallery-box mfp-iframe"
-                                   data-aos="stretch-right" data-aos-easing="none" data-aos-once="true"
-                                   data-aos-duration="500" data-aos-delay="0">
-                                    <i class="icon icon-size-m icon-ion-ios-play-outline"></i>
-                                    <span class="caption">Video item</span>
-                                    <img src="static/images/screen-32.jpg" alt="screen">
+                                <a href="static/{{ photo2.picture.url }}" class="gallery-box" data-aos="stretch-right"
+                                   data-aos-easing="none" data-aos-once="true" data-aos-duration="500" data-aos-delay="0">
+                                    <i class="icon icon-size-m icon-plus"></i>
+                                    <span class="caption">{{ photo2.title }}</span>
+                                    <img src="static/{{ photo2.picture.url }}" alt="screen">
                                 </a>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="static/{{ photo3.picture.url }}" class="gallery-box" data-aos="stretch-left"
+                                       data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
+                                       data-aos-delay="0">
+                                        <i class="icon icon-size-m icon-plus"></i>
+                                        <span class="caption">{{ photo3.title }}</span>
+                                        <img src="static/{{ photo3.picture.url }}" alt="screen">
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="static/{{ photo4.picture.url }}" class="gallery-box"
+                                       data-aos="stretch-right" data-aos-easing="none" data-aos-once="true"
+                                       data-aos-duration="500" data-aos-delay="0">
+                                        <i class="icon icon-size-m icon-plus"></i>
+                                        <span class="caption">{{ photo4.title }}</span>
+                                        <img src="static/{{ photo4.picture.url }}" alt="screen">
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+{#                        <div class="col-md-6">#}
+{#                            <a href="https://www.google.com.ua" target="_blank" class="gallery-box external"#}
+{#                               data-aos="stretch-right" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"#}
+{#                               data-aos-delay="0">#}
+{#                                <i class="icon icon-size-m icon-link"></i>#}
+{#                                <span class="caption">Item with external link</span>#}
+{#                                <img src="static/images/screen-30.jpg" alt="screen">#}
+{#                            </a>#}
+{#                            <div class="row">#}
+{#                                <div class="col-md-6">#}
+{#                                    <a href="static/images/screen-31.jpg" class="gallery-box" data-aos="stretch-left"#}
+{#                                       data-aos-easing="none" data-aos-once="true" data-aos-duration="500"#}
+{#                                       data-aos-delay="0">#}
+{#                                        <i class="icon icon-size-m icon-plus"></i>#}
+{#                                        <span class="caption">Gallery item with zoom option</span>#}
+{#                                        <img src="static/images/screen-31.jpg" alt="screen">#}
+{#                                    </a>#}
+{#                                </div>#}
+{#                                <div class="col-md-6">#}
+{#                                    <a href="https://vimeo.com/123395658" class="gallery-box mfp-iframe"#}
+{#                                       data-aos="stretch-right" data-aos-easing="none" data-aos-once="true"#}
+{#                                       data-aos-duration="500" data-aos-delay="0">#}
+{#                                        <i class="icon icon-size-m icon-ion-ios-play-outline"></i>#}
+{#                                        <span class="caption">Video item</span>#}
+{#                                        <img src="static/images/screen-32.jpg" alt="screen">#}
+{#                                    </a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
                 </div>
 {#                <a href="#" class="btn btn-default mt-75"><span>Older works</span><i#}
 {#                        class="icon-position-right icon-size-m icon-arrow-right"></i></a>#}

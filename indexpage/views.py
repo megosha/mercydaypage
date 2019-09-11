@@ -20,6 +20,11 @@ class Index(View):
         block4 = models.Block.objects.get(order=4)
         block5 = models.Block.objects.get(order=5)
         block6 = models.Block.objects.get(order=6)
+        photo1 = block5.item.filter(order=1).first()
+        photo2 = block5.item.filter(order=2).first()
+        photo3 = block5.item.filter(order=3).first()
+        photo4 = block5.item.filter(order=4).first()
         context = {'navblock':navblock, 'block1': block1, 'block2': block2, 'block3': block3,
-                   'block4': block4, 'block5': block5, 'block6': block6}
+                   'block4': block4, 'block5': block5, 'block6': block6,
+                   'photo1':photo1, 'photo2':photo2, 'photo3':photo3, 'photo4':photo4}
         return render(request, 'includes/index.html', context)

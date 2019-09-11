@@ -21,6 +21,7 @@ class ItemAdmin(admin.ModelAdmin):
     save_on_top = True
 
 
+
 class SettingsAdmin(admin.ModelAdmin):
     list_display = ['title', 'metadescr', 'metakeywords']
     search_fields = ['title', 'metadescr', 'metakeywords']
