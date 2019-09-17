@@ -89,7 +89,7 @@ $('#popup-list-form-form').submit(function () {
         $.ajax({
             url: action,
             type: 'POST',
-            data: form,
+            json: {'name': this.name, 'tel': this.tel},
             cache: false,
             contentType: false,
             processData: false,
@@ -160,7 +160,7 @@ $('#popup-center-form-form').submit(function () {
     });
     //end data area
     if ($(this).valid()) {
-        $(this).find('[type=submit]').button('loading');
+        //$(this).find('[type=submit]').button('loading');
         var form = new FormData();
         var $inputFiles = $('.inputfile');
         $inputFiles.each(function(indx, inputFile){
@@ -174,13 +174,21 @@ $('#popup-center-form-form').submit(function () {
         $.ajax({
             url: action,
             type: 'POST',
-            data: form,
+            // data: form,
+            dataType: 'json',
+            data: {name: this.name.value, tel: this.tel.value},
             cache: false,
-            contentType: false,
-            processData: false,
+            // contentType: false,
+            // processData: false,
             success: function () {
-                $('.modal.in').modal( 'hide' );
-                $('#popup-center-form-form').find('[type=submit]').button('complete');
+                // $('.modal.in').modal( 'hide' );
+                //$('#popup-center-form-form').find('[type=submit]').button('complete');
+                document.getElementById('btntitle').innerText = 'ok';
+                $('#popup-center-form-form').find('[type=submit]').attr('disabled', true);
+                // document.getElementById('btnsubmit').setAttribute("type", "button");
+                // document.getElementById('btnsubmit').disabled = true;
+;
+
             },
             error: function () {
                 $('#popup-center-form-form').find('[type=submit]').button('reset');

@@ -21,4 +21,5 @@ urlpatterns = [
     path('_day_of_mercy_admin/', admin.site.urls),
     path('', views.Home.as_view()),
     path('index', views.Index.as_view()),
+    path('registry', views.Registry.as_view()),
 ]

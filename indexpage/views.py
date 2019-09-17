@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from indexpage import models
+# from django.views.decorators.csrf import csrf_exempt
+
+
+
 
 
 # Create your views here.
@@ -28,3 +32,12 @@ class Index(View):
                    'block4': block4, 'block5': block5, 'block6': block6,
                    'photo1':photo1, 'photo2':photo2, 'photo3':photo3, 'photo4':photo4}
         return render(request, 'includes/index.html', context)
+
+class Registry(View):
+    # @csrf_exempt
+    def post(self, request):
+        if "name" in request.POST and "tel" in request.POST:
+            print("HERE")
+            return JsonResponse({})
+        else:
+            return JsonResponse({})
