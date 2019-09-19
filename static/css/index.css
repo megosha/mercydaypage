@@ -1,7 +1,8 @@
-#nav-center-logo-menu-social {
-    background: radial-gradient(circle, #273162 30%, #6478b7 70%);
-    background: -webkit-radial-gradient(circle, #6478b7 30%, #273162 70%);
-}
+/*#nav-center-logo-menu-social {*/
+/*    background: radial-gradient(circle, #273162 30%, #6478b7 70%);*/
+/*    background: -webkit-radial-gradient(circle, #6478b7 30%, #273162 70%);*/
+/*}*/
+
 /*#nav-center-logo-menu-social .nav-bg {*/
 /* 	opacity: 1;*/
 /*}*/
@@ -10,7 +11,8 @@
  	background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    opacity: 0.01;
+    /*opacity: 0.01;*/
+    background: linear-gradient(360deg, #6478b7, #273162);
 }
 
 
@@ -54,7 +56,7 @@
     -webkit-background-repeat: no-repeat;
     /*background-position: center center;*/
     background-position: center center;
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
 
