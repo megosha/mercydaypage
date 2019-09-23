@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = secret_cnf.SETTINGS_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -121,15 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 if DEBUG:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
-    MEDIA_URL = 'images/'
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    MEDIA_URL = '/static/images/'
 
 STATIC_URL = '/static/'
-
+MEDIA_URL = 'images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'images')
-
 
 EMAIL_HOST_USER = secret_cnf.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = secret_cnf.EMAIL_HOST_PASSWORD
