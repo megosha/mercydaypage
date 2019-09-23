@@ -1,3 +1,12 @@
+@media (max-width: 767px) {
+	.head2 {
+		font-size: 30px !important;
+	}
+    .phone a {
+        font-size: 40px!important;
+    }
+}
+
 /*#nav-center-logo-menu-social {*/
 /*    background: radial-gradient(circle, #273162 30%, #6478b7 70%);*/
 /*    background: -webkit-radial-gradient(circle, #6478b7 30%, #273162 70%);*/
@@ -88,7 +97,8 @@
 
 .phone{
     font-family: 'Roboto'!important;
-	font-size: 72px!important;
+	font-size: 60px!important;
+    padding: 0 10px 0 10px;
 	font-style: initial!important;
 	font-weight: 100!important;
 	text-transform: inherit!important;
