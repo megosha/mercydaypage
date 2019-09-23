@@ -129,3 +129,15 @@ else:
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'images')
+
+
+EMAIL_HOST_USER = secret_cnf.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = secret_cnf.EMAIL_HOST_PASSWORD
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+

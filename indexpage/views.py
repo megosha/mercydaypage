@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponseRedirect, JsonResponse
 from indexpage import models
-# from django.views.decorators.csrf import csrf_exempt
-
+from django.core.mail import send_mail
 
 
 
@@ -34,10 +33,17 @@ class Index(View):
         return render(request, 'includes/index.html', context)
 
 class Registry(View):
-    # @csrf_exempt
     def post(self, request):
         if "name" in request.POST and "tel" in request.POST:
             print("HERE")
+            subject = 'Новая заявка на проект "День Милосерия"'
+            message = f'Заявка на участие в проекте "День Милосердия".\nФИО: {request.POST["name"]}' \
+                      f'\nТелефон: {request.POST["tel"]}'
+            from_email = 'utils@electis.ru'
+            try:
+                send_mail(subject, message, from_email, ('mvgosha@gmail.com',))#, fail_silently=True)
+            except Exception as e:
+                print(e)
             return JsonResponse({})
         else:
             return JsonResponse({})
