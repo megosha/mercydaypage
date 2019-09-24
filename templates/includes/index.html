@@ -66,7 +66,7 @@
                             data-aos-delay="0" data-aos-once="true"><span
                                 class="text-uppercase"><strong>{{ block2.title }}</strong></span></h2>
                         <h3 class="mb-75" data-aos="fade" data-aos-easing="linear" data-aos-duration="500"
-                            data-aos-delay="0" data-aos-once="true"><em>{{ block2.subtitle }}</em></h3>
+                            data-aos-delay="0" data-aos-once="true"><em>{{ block2.subtitle|safe }}</em></h3>
                         <p data-aos="fade" data-aos-easing="none" data-aos-duration="500" data-aos-delay="100"
                            data-aos-once="true">
                             {{ block2.content|safe }}
@@ -91,7 +91,8 @@
                              data-aos-duration="500" data-aos-delay="0" data-aos-once="true">
                             <i class="card-icon icon-size-xl icon-register icon-color mb-25"></i>
                             <h3 class="">{{ item.order }}. {{ item.title }}</h3>
-                            <p class="mb-25">{{ item.content }}
+                            <p class="mb-25">{{ item.content|safe }}
+                                <a href="tel:{{ settings.phone }}">{{ settings.phone }}</a>
                             </p>
                         </div>
                     </div>
@@ -146,7 +147,7 @@
                     <div class="text-md-right">
                         <h4 data-aos="stretch-right" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
                             data-aos-delay="0">
-                            <mark class="phone"><a href="tel:{{ block4.content }}"><strong>{{ block4.content }}</strong></a></mark>
+                            <mark class="phone"><a href="tel:{{ settings.phone }}"><strong>{{ settings.phone }}</strong></a></mark>
                         </h4>
                     </div>
                 </div>

@@ -27,7 +27,9 @@ class Index(View):
         photo2 = block5.item.filter(order=2).first()
         photo3 = block5.item.filter(order=3).first()
         photo4 = block5.item.filter(order=4).first()
-        context = {'navblock':navblock, 'block1': block1, 'block2': block2, 'block3': block3,
+        settings = models.Settings.objects.get()
+
+        context = {'settings':settings, 'navblock':navblock, 'block1': block1, 'block2': block2, 'block3': block3,
                    'block4': block4, 'block5': block5, 'block6': block6,
                    'photo1':photo1, 'photo2':photo2, 'photo3':photo3, 'photo4':photo4}
         return render(request, 'includes/index.html', context)
@@ -35,15 +37,18 @@ class Index(View):
 class Registry(View):
     def post(self, request):
         if "name" in request.POST and "tel" in request.POST:
-            print("HERE")
+            # print("HERE")
             subject = 'Новая заявка на проект "День Милосерия"'
             message = f'Заявка на участие в проекте "День Милосердия".\nФИО: {request.POST["name"]}' \
                       f'\nТелефон: {request.POST["tel"]}'
             from_email = 'utils@electis.ru'
+            settings = models.Settings.objects.get()
+            email = settings.email
             try:
-                send_mail(subject, message, from_email, ('mvgosha@gmail.com',))#, fail_silently=True)
+                send_mail(subject, message, from_email, (email,))#, fail_silently=True)
             except Exception as e:
                 print(e)
+                return JsonResponse({"error":"1"})
             return JsonResponse({})
         else:
             return JsonResponse({})

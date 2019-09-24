@@ -180,11 +180,26 @@ $('#popup-center-form-form').submit(function () {
             cache: false,
             // contentType: false,
             // processData: false,
-            success: function () {
+            success: function (result) {
                 // $('.modal.in').modal( 'hide' );
                 //$('#popup-center-form-form').find('[type=submit]').button('complete');
-                document.getElementById('btntitle').innerText = 'ok';
-                $('#popup-center-form-form').find('[type=submit]').attr('disabled', true);
+                if (result.error){
+                    document.getElementById('errormsg').innerHTML = '<span class="text-danger">Ошибка отправления заявки.<br>Проверьте данные и повторите попытку позднее или свяжитесь с администратором по телефону.</span>';
+                }
+                else {
+                    nameinp = document.getElementById('nameinput');
+                    nameinp.setAttribute("readonly", true);
+                    document.getElementById('telinput').setAttribute("readonly", true);
+                    if (nameinp !== "-"){
+                        msg = nameinp + '!\nВаша заявка успешно отправлена!';
+                    }
+                    else{
+                        msg = 'Ваша заявка успешно отправлена!';
+                    }
+                    document.getElementById('btntitle').innerText = msg;
+                    // $('#popup-center-form-form').find('[type=submit]').attr('disabled', true);
+                }
+
                 // document.getElementById('btnsubmit').setAttribute("type", "button");
                 // document.getElementById('btnsubmit').disabled = true;
 ;

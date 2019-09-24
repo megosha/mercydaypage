@@ -23,9 +23,10 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ['title', 'metadescr', 'metakeywords']
-    search_fields = ['title', 'metadescr', 'metakeywords']
-
+    list_display = ['title', 'phone', 'email', 'metadescr', 'metakeywords']
+    # search_fields = ['phone', 'email',]
+    list_display_links = ['title']
+    list_editable = ['phone', 'email', 'metadescr', 'metakeywords']
 
 admin.site.register(models.Block, BlockAdmin)
 admin.site.register(models.Item, ItemAdmin)
