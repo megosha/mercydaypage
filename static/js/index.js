@@ -187,11 +187,10 @@ $('#popup-center-form-form').submit(function () {
                     document.getElementById('errormsg').innerHTML = '<span class="text-danger">Ошибка отправления заявки.<br>Проверьте данные и повторите попытку позднее или свяжитесь с администратором по телефону.</span>';
                 }
                 else {
-                    nameinp = document.getElementById('nameinput');
-                    nameinp.setAttribute("readonly", true);
+                    document.getElementById('nameinput').setAttribute("readonly", true);
                     document.getElementById('telinput').setAttribute("readonly", true);
-                    if (nameinp !== "-"){
-                        msg = nameinp + '!\nВаша заявка успешно отправлена!';
+                    if (document.getElementById('nameinput') !== "-"){
+                        msg = document.getElementById('nameinput') + '!\nВаша заявка успешно отправлена!';
                     }
                     else{
                         msg = 'Ваша заявка успешно отправлена!';
