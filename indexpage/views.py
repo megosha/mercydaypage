@@ -11,7 +11,7 @@ from django.core.mail import send_mail
 
 class Home(View):
     def dispatch(self, request, *args, **kwargs):
-        return HttpResponseRedirect('index')
+        return HttpResponseRedirect('/')
 
 
 class Index(View):
