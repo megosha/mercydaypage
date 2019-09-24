@@ -190,12 +190,12 @@ $('#popup-center-form-form').submit(function () {
                     document.getElementById('nameinput').setAttribute("readonly", true);
                     document.getElementById('telinput').setAttribute("readonly", true);
                     if (document.getElementById('nameinput') !== "-"){
-                        msg = document.getElementById('nameinput') + '!\nВаша заявка успешно отправлена!';
+                        document.getElementById('btntitle').innerText = document.getElementById('nameinput').value + '!\nВаша заявка успешно отправлена!';
                     }
-                    else{
-                        msg = 'Ваша заявка успешно отправлена!';
+                    else {
+                        document.getElementById('btntitle').innerText = 'Ваша заявка успешно отправлена!';
                     }
-                    document.getElementById('btntitle').innerText = msg;
+                    // document.getElementById('btntitle').innerText = msg;
                     // $('#popup-center-form-form').find('[type=submit]').attr('disabled', true);
                 }
 
