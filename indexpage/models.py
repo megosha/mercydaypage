@@ -40,6 +40,7 @@ class Settings(models.Model):
     title = models.CharField(max_length=32, verbose_name="Заголовок вкладки", default='', blank=True, null=True)
     phone = models.CharField(max_length=32, verbose_name="ТЕлефон для всех мест на сайте", default='', blank=True, null=True)
     email = models.EmailField(verbose_name="Email для рассылки заявок", default='', blank=True, null=True)
+    date = models.DateTimeField(default=None, verbose_name="Дата и время проведения", blank=True, null=True)
 
     class Meta:
         verbose_name = "Настройки"

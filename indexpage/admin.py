@@ -17,16 +17,16 @@ class ItemAdmin(admin.ModelAdmin):
     list_display = ['title', 'order', 'content']
     search_fields = ['order', 'title', 'content']
     list_display_links = ['title']
-    list_editable = ['order', 'content']
+    list_editable = ['content']
     save_on_top = True
 
 
 
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ['title', 'phone', 'email', 'metadescr', 'metakeywords']
+    list_display = ['title', 'date', 'phone', 'email', 'metadescr', 'metakeywords']
     # search_fields = ['phone', 'email',]
     list_display_links = ['title']
-    list_editable = ['phone', 'email', 'metadescr', 'metakeywords']
+    list_editable = ['phone', 'email', 'date']
 
 admin.site.register(models.Block, BlockAdmin)
 admin.site.register(models.Item, ItemAdmin)

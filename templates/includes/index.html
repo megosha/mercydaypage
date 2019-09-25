@@ -13,7 +13,7 @@
     </div>
         <nav id="nav-center-logo-menu-social" class="navbar navbar-fixed-top dark">
             <div class="container">
-                <div class="navbar-header" style="position: absolute;  left:40px">
+                <div class="navbar-header" style="position: absolute; left:40px; z-index: 1000;">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" style="position: fixed; right:10%;z-index: 1000;"><span
                             class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     <div class="navbar-brand"><a href="/"><img src="../../static/images/logo2-light.png"
@@ -66,7 +66,7 @@
                             data-aos-delay="0" data-aos-once="true"><span
                                 class="text-uppercase"><strong>{{ block2.title }}</strong></span></h2>
                         <h3 class="mb-75" data-aos="fade" data-aos-easing="linear" data-aos-duration="500"
-                            data-aos-delay="0" data-aos-once="true"><em>{{ block2.subtitle|safe }}</em></h3>
+                            data-aos-delay="0" data-aos-once="true"><em>{{ date }}{% if place is not None %}<br>{{ place.content }}{% endif %}</em></h3>
                         <p data-aos="fade" data-aos-easing="none" data-aos-duration="500" data-aos-delay="100"
                            data-aos-once="true">
                             {{ block2.content|safe }}

@@ -205,7 +205,8 @@ $('#popup-center-form-form').submit(function () {
 
             },
             error: function () {
-                $('#popup-center-form-form').find('[type=submit]').button('reset');
+                // $('#popup-center-form-form').find('[type=submit]').button('reset');
+                document.getElementById('errormsg').innerHTML = '<span class="text-danger">Ошибка отправления заявки.<br>Проверьте данные и повторите попытку позднее или свяжитесь с администратором по телефону.</span>';
             }
         });
     } else {

@@ -3,8 +3,7 @@ from django.views import View
 from django.http import HttpResponseRedirect, JsonResponse
 from indexpage import models
 from django.core.mail import send_mail
-
-
+from datetime import datetime
 
 
 # Create your views here.
@@ -28,10 +27,25 @@ class Index(View):
         photo3 = block5.item.filter(order=3).first()
         photo4 = block5.item.filter(order=4).first()
         settings = models.Settings.objects.get()
+        datefield = block2.item.filter(order=1).first()
+        datefield = datefield.content if datefield else ''
+        date = settings.date
+        if isinstance(date, datetime) and datetime.now() > date.replace(tzinfo=None):
+            settings.date = None
+            settings.save()
+
+        if isinstance(settings.date, datetime):
+            date = f"{datefield} {settings.date.strftime('%d.%m.%Y %H:%M')}"
+            place = block2.item.filter(order=2).first()
+        else:
+            date = f"Дату и место проведения уточняйте по телефону"
+            place = None
+
+
 
         context = {'settings':settings, 'navblock':navblock, 'block1': block1, 'block2': block2, 'block3': block3,
                    'block4': block4, 'block5': block5, 'block6': block6,
-                   'photo1':photo1, 'photo2':photo2, 'photo3':photo3, 'photo4':photo4}
+                   'photo1':photo1, 'photo2':photo2, 'photo3':photo3, 'photo4':photo4, "date":date, "place":place}
         return render(request, 'includes/index.html', context)
 
 class Registry(View):
