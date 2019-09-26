@@ -30,7 +30,7 @@ class Index(View):
         datefield = block2.item.filter(order=1).first()
         datefield = datefield.content if datefield else ''
         date = settings.date
-        if isinstance(date, datetime) and datetime.now() > date.replace(tzinfo=None):
+        if isinstance(date, datetime) and datetime.now() > date:
             settings.date = None
             settings.save()
 
@@ -52,7 +52,7 @@ class Registry(View):
     def post(self, request):
         if "name" in request.POST and "tel" in request.POST:
             # print("HERE")
-            subject = 'Новая заявка на проект "День Милосерия"'
+            subject = 'Новая заявка на проект "День Милосердия"'
             message = f'Заявка на участие в проекте "День Милосердия".\nФИО: {request.POST["name"]}' \
                       f'\nТелефон: {request.POST["tel"]}'
             from_email = 'utils@electis.ru'
