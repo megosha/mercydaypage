@@ -10,6 +10,7 @@ class Block(models.Model):
     content = models.TextField(verbose_name="Основной текст", default='', blank=True, null=True)
     picture = models.FileField(verbose_name="Фоновое изображение", default='', blank=True, null=True)
     item = models.ManyToManyField('Item', verbose_name="Элемент (списка, картинка)", blank=True)
+    # pic = models.ImageField(upload_to='static/images/', verbose_name="Фоновое изображение2", default='', blank=True, null=True)
 
     def __str__(self):
         return f"№: {self.order}, Имя: {self.title}"
