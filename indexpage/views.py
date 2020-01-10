@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from indexpage import models
 from django.core.mail import send_mail
 from datetime import datetime
+import os
 
 
 # Create your views here.
@@ -58,11 +59,23 @@ class Registry(View):
             from_email = 'utils@electis.ru'
             settings = models.Settings.objects.get()
             email = settings.email
+            filename = os.path.join('/www', 'mercydaypage', 'registry_log.txt')
             try:
                 send_mail(subject, message, from_email, (email,))#, fail_silently=True)
             except Exception as e:
                 print(e)
+                try:
+                    with open(filename, 'a', encoding='utf-8') as inp:
+                        inp.write(str(datetime.now()) + str(request.POST["name"]) + str(request.POST["tel"]) + str(e) + "\n")
+                except Exception as err:
+                    print(err)
                 return JsonResponse({"error":"1"})
+            try:
+                with open(filename, 'a', encoding='utf-8') as inp:
+                    inp.write(
+                        str(datetime.now()) + str(request.POST["name"]) + str(request.POST["tel"]) + "\n")
+            except Exception as err:
+                print(err)
             return JsonResponse({})
         else:
             return JsonResponse({})
