@@ -3,6 +3,8 @@ from django.views import View
 from django.http import HttpResponseRedirect, JsonResponse
 from indexpage import models
 from django.core.mail import send_mail
+from django.conf import settings
+
 from datetime import datetime
 import os
 
@@ -59,7 +61,7 @@ class Registry(View):
             from_email = 'utils@electis.ru'
             settings = models.Settings.objects.get()
             email = settings.email
-            filename = os.path.join('/www', 'mercydaypage', 'registry_log.txt')
+            filename = os.path.join(settings.BASE_DIR, 'registry_log.txt')
             try:
                 send_mail(subject, message, from_email, (email,))#, fail_silently=True)
             except Exception as e:
