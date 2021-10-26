@@ -190,10 +190,10 @@ $('#popup-center-form-form').submit(function () {
                     document.getElementById('nameinput').setAttribute("readonly", true);
                     document.getElementById('telinput').setAttribute("readonly", true);
                     if (document.getElementById('nameinput') !== "-"){
-                        document.getElementById('btntitle').innerText = document.getElementById('nameinput').value + '!\nВаша заявка успешно отправлена!';
+                        document.getElementById('btntitle').innerText = '<i class=" text-success card-icon icon-size-m icon-checkmark-circle"></i><span class="text-success h3">Вы успешно зарегистрированы!</span>';
                     }
                     else {
-                        document.getElementById('btntitle').innerText = 'Ваша заявка успешно отправлена!';
+                        document.getElementById('btntitle').innerText = '<i class=" text-success card-icon icon-size-m icon-checkmark-circle"></i><span class="text-success h3">Вы успешно зарегистрированы!</span>';
                     }
                     // document.getElementById('btntitle').innerText = msg;
                     // $('#popup-center-form-form').find('[type=submit]').attr('disabled', true);
