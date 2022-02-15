@@ -54,7 +54,6 @@ class Index(View):
 class Registry(View):
     def post(self, request):
         if "name" in request.POST and "tel" in request.POST:
-            # print("HERE")
             subject = 'Новая заявка на проект "День Милосердия"'
             message = f'Заявка на участие в проекте "День Милосердия".\nФИО: {request.POST["name"]}' \
                       f'\nТелефон: {request.POST["tel"]}'
@@ -63,7 +62,7 @@ class Registry(View):
             email = settings.email
             filename = os.path.join(sts.BASE_DIR, 'registry_log.txt')
             try:
-                send_mail(subject, message, from_email, (email,))#, fail_silently=True)
+                send_mail(subject, message, from_email, (email,))
             except Exception as e:
                 print(e)
                 try:
