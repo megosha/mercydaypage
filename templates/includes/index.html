@@ -118,9 +118,11 @@
                         {% endif %}
                 {% endfor %}
                 </div>
-                <button class="btn btn-primary mt-50" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
-                    <span><strong>Зарегистрироваться</strong></span>
-                </button>
+                {% if btn %}
+                    <button class="btn btn-primary mt-50" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
+                        <span><strong>Зарегистрироваться</strong></span>
+                    </button>
+                {% endif %}
             </div>
             <div class="bg" {% if block3.picture %}style="background-image: url('/static/{{ block3.picture.url }}');"{% endif %}></div>
         </section>

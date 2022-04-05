@@ -33,9 +33,12 @@ class Index(View):
         datefield = block2.item.filter(order=1).first()
         datefield = datefield.content if datefield else ''
         date = settings.date
-        if isinstance(date, datetime) and datetime.now() > date:
-            settings.date = None
-            settings.save()
+        btn = False
+        if isinstance(date, datetime):
+            btn =  datetime.now().day >= date.day
+            if datetime.now() > date:
+                settings.date = None
+                settings.save()
 
         if isinstance(settings.date, datetime):
             date = f"{datefield} {settings.date.strftime('%d.%m.%Y %H:%M')}"
@@ -47,8 +50,8 @@ class Index(View):
 
 
         context = {'settings':settings, 'navblock':navblock, 'block1': block1, 'block2': block2, 'block3': block3,
-                   'block4': block4, 'block5': block5, 'block6': block6,
-                   'photo1':photo1, 'photo2':photo2, 'photo3':photo3, 'photo4':photo4, "date":date, "place":place}
+                   'block4': block4, 'block5': block5, 'block6': block6, 'photo1':photo1, 'photo2':photo2,
+                   'photo3':photo3, 'photo4':photo4, "date":date, "place":place, 'btn':btn}
         return render(request, 'includes/index.html', context)
 
 class Registry(View):
@@ -61,6 +64,8 @@ class Registry(View):
             settings = models.Settings.objects.get()
             email = settings.email
             filename = os.path.join(sts.BASE_DIR, 'registry_log.txt')
+            if not (isinstance(settings.date, datetime) and datetime.now().day >= settings.date.day):
+                return JsonResponse({})
             try:
                 send_mail(subject, message, from_email, (email,))
             except Exception as e:
