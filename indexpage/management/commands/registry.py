@@ -18,7 +18,9 @@ class Command(BaseCommand):
             if settings.date is None and settings.registry:
                 settings.registry = False
                 settings.save()
-            if settings.date.date() == datetime.now().date() and not settings.registry:
+
+
+            if settings.date and settings.date.date() == datetime.now().date() and not settings.registry:
                 date_time = settings.date.strftime("%m.%d.%Y")
                 subject = f'Реестр заявок на проект "День Милосердия" {date_time}'
                 message = f''
