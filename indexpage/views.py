@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponseRedirect, JsonResponse
-from indexpage import models
+from indexpage import models, helpers
 from django.core.mail import send_mail
 from django.conf import settings as sts
 
@@ -82,15 +82,14 @@ class Registry(View):
             except Exception as err:
                 print(err)
             try:
-                import helpers
                 if not os.path.isfile(helpers.filename):
                     helpers.write_sheet(table=[], addition=[f'{request.POST["name"]}', f'{request.POST["tel"]}'] )
                 else:
                     current_sheet = helpers.extract_sheet()
                     current_table = helpers.xl_to_list(current_sheet)
                     helpers.write_sheet(current_table, [f'{request.POST["name"]}', f'{request.POST["tel"]}'] )
-            except:
-                pass
+            except Exception as error:
+                print(error)
             return JsonResponse({})
         else:
             return JsonResponse({})

@@ -1,7 +1,6 @@
 .idea
 *.pyc
 venv/
-indexpage/migrations/
 db.sqlite3
 secret*
 *.log
