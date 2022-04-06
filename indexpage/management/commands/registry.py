@@ -9,7 +9,6 @@ from django.core.mail.message import EmailMultiAlternatives
 from indexpage import models
 
 
-
 class Command(BaseCommand):
     def handle(self, *args, **options):
         sleep_time = 18000
@@ -19,13 +18,13 @@ class Command(BaseCommand):
             if settings.date is None and settings.registry:
                 settings.registry = False
                 settings.save()
-            if settings.date == datetime.now().date() and not settings.registry:
+            if settings.date.date() == datetime.now().date() and not settings.registry:
                 date_time = settings.date.strftime("%m.%d.%Y")
                 subject = f'Реестр заявок на проект "День Милосердия" {date_time}'
                 message = f''
                 email = settings.email
 
-                filename = os.path.join(sts.BASE_DIR, f'{settings.date().date}.xls')
+                filename = os.path.join(sts.BASE_DIR, f'{settings.date.date()}.xls')
 
                 mail = EmailMultiAlternatives(subject, message, sts.DEFAULT_FROM_EMAIL, (email,))
                 mail.attach_file(os.path.join(filename))
