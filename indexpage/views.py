@@ -60,14 +60,13 @@ class Registry(View):
             subject = 'Новая заявка на проект "День Милосердия"'
             message = f'Заявка на участие в проекте "День Милосердия".\nФИО: {request.POST["name"]}' \
                       f'\nТелефон: {request.POST["tel"]}'
-            from_email = 'utils@electis.ru'
             settings = models.Settings.objects.get()
             email = settings.email
             filename = os.path.join(sts.BASE_DIR, 'registry_log.txt')
             if not (isinstance(settings.date, datetime) and datetime.now().day >= settings.date.day):
-                return JsonResponse({})
+                return JsonResponse({"error":"1"})
             try:
-                send_mail(subject, message, from_email, (email,))
+                send_mail(subject, message, sts.DEFAULT_FROM_EMAIL, (email,))
             except Exception as e:
                 print(e)
                 try:
@@ -82,6 +81,17 @@ class Registry(View):
                         str(datetime.now()) + str(request.POST["name"]) + str(request.POST["tel"]) + "\n")
             except Exception as err:
                 print(err)
+            try:
+                import helpers
+                if not os.path.isfile(helpers.filename):
+                    helpers.write_sheet(table=[], addition=[f'{request.POST["name"]}', f'{request.POST["tel"]}'] )
+                else:
+                    current_sheet = helpers.extract_sheet()
+                    current_table = helpers.xl_to_list(current_sheet)
+                    helpers.write_sheet(current_table, [f'{request.POST["name"]}', f'{request.POST["tel"]}'] )
+            except:
+                pass
             return JsonResponse({})
         else:
             return JsonResponse({})
+

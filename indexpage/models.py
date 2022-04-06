@@ -42,6 +42,7 @@ class Settings(models.Model):
     phone = models.CharField(max_length=32, verbose_name="ТЕлефон для всех мест на сайте", default='', blank=True, null=True)
     email = models.EmailField(verbose_name="Email для рассылки заявок", default='', blank=True, null=True)
     date = models.DateTimeField(default=None, verbose_name="Дата и время проведения", blank=True, null=True)
+    registry = models.BooleanField(default=False, verbose_name="Реестр месяца отправлен")
 
     class Meta:
         verbose_name = "Настройки"
