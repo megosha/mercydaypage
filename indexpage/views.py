@@ -63,8 +63,8 @@ class Registry(View):
             settings = models.Settings.objects.get()
             email = settings.email
             filename = os.path.join(sts.BASE_DIR, 'registry_log.txt')
-            if not (isinstance(settings.date, datetime) and datetime.now().day >= settings.date.day):
-                return JsonResponse({"error":"1"})
+            # if not (isinstance(settings.date, datetime) and datetime.now().day >= settings.date.day):
+            #     return JsonResponse({"error":"1"})
             try:
                 send_mail(subject, message, sts.DEFAULT_FROM_EMAIL, (email,))
             except Exception as e:
