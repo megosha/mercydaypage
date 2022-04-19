@@ -35,7 +35,7 @@ class Index(View):
         date = settings.date
         btn = False
         if date is not None:
-            btn =  datetime.now() >= date
+            btn = datetime.now() <= date
             if datetime.now() > date:
                 settings.date = None
                 settings.save()
