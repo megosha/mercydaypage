@@ -34,8 +34,8 @@ class Index(View):
         datefield = datefield.content if datefield else ''
         date = settings.date
         btn = False
-        if isinstance(date, datetime):
-            btn =  datetime.now().day >= date.day
+        if date is not None:
+            btn =  datetime.now() >= date
             if datetime.now() > date:
                 settings.date = None
                 settings.save()
