@@ -7,8 +7,10 @@ import xlrd
 import xlwt
 
 
-filename = os.path.join(sts.BASE_DIR, f'{datetime.now().date()}.xls')
-def extract_sheet(fname=filename, sheet_name_='blago22'):
+def generate_filename(project_date):
+    return os.path.join(sts.BASE_DIR, f'{project_date}.xls')
+
+def extract_sheet(fname, sheet_name_='blago22'):
     my_book = xlrd.open_workbook(fname)
     my_sheet = my_book.sheet_by_name(sheet_name_)
     return my_sheet
@@ -22,7 +24,7 @@ def xl_to_list(sheet_):
         my_table.append(my_row)
     return my_table
 
-def write_sheet(table:list, addition, fname=filename,  sheet_name_='blago22'):
+def write_sheet(table:list, addition, fname, sheet_name_='blago22'):
     book = xlwt.Workbook()
     sheet1 = book.add_sheet(sheet_name_)
     for num, val in enumerate(table):

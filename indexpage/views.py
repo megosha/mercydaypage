@@ -82,12 +82,16 @@ class Registry(View):
             except Exception as err:
                 print(err)
             try:
-                if not os.path.isfile(helpers.filename):
-                    helpers.write_sheet(table=[], addition=[f'{request.POST["name"]}', f'{request.POST["tel"]}'] )
+                valid_date = settings.date.date() if settings.date is not None else 'None'
+                fname = helpers.generate_filename(valid_date)
+                if not os.path.isfile(fname):
+                    helpers.write_sheet(table=[],
+                                        addition=[f'{request.POST["name"]}', f'{request.POST["tel"]}'],
+                                        fname=fname )
                 else:
-                    current_sheet = helpers.extract_sheet()
+                    current_sheet = helpers.extract_sheet(fname=fname)
                     current_table = helpers.xl_to_list(current_sheet)
-                    helpers.write_sheet(current_table, [f'{request.POST["name"]}', f'{request.POST["tel"]}'] )
+                    helpers.write_sheet(current_table, [f'{request.POST["name"]}', f'{request.POST["tel"]}'], fname )
             except Exception as error:
                 print(error)
             return JsonResponse({})
