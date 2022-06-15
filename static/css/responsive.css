@@ -159,6 +159,9 @@
     padding-top: 4rem;
   min-height: 600px;
   }
+  .about-text-custom{
+    text-align: center;
+  }
   .section-title {
     font-size: 22px;
   }

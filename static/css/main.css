@@ -75,6 +75,9 @@ mark a:hover{
 .about-link-2 a{
   color: #E91E63FF;
 }
+.about-text-custom{
+  margin-top: 4rem;
+}
 .video img{
   box-shadow: -1px 2px 20px 7px rgb(157 157 157 / 83%);
 }
