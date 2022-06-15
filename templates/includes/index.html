@@ -90,7 +90,7 @@
           <li>
             <a class="page-scroll" href="#faq">Частые вопросы</a>
           </li>
-          {% if  settings.date %}
+          {% if settings.date %}
             <li>
                 <a class="page-scroll" href="#contact">Регистрация</a>
             </li>
@@ -116,9 +116,11 @@
             <div class="carousel-caption d-md-block">
               <p class="fadeInUp wow" data-wow-delay=".6s">ДЕНЬ МИЛОСЕРДИЯ</p>
               <h1 class="wow fadeInDown heading" data-wow-delay=".4s">БЛАГОТВОРИТЕЛЬНЫЙ ПРОЕКТ</h1>
-              <button class="btn btn-common" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
+              {% if settings.date %}
+                <button class="btn btn-common" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
                         <span>Регистрация</span>
                     </button>
+              {% endif %}
               {% if settings.phone %}
                 <a href="tel:{{ settings.phone }}" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Позвонить</a>
               {% endif %}
@@ -131,6 +133,7 @@
 
     </header>
 
+    {% if settings.date %}
     <!-- Coundown Section Start -->
     <section class="countdown-timer section-padding">
       <div class="container">
@@ -155,6 +158,7 @@
       </div>
     </section>
     <!-- Coundown Section End -->
+    {% endif %}
     <!-- Event Slides Section Start -->
     <section id="event-slides" class="section-padding">
       <div class="container">
