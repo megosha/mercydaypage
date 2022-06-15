@@ -38,7 +38,7 @@ class Item(models.Model):
 class Settings(models.Model):
     metadescr = models.TextField(verbose_name="Meta Description", default='', blank=True, null=True)
     metakeywords = models.TextField(verbose_name="Meta Keyword", default='', blank=True, null=True)
-    title = models.CharField(max_length=32, verbose_name="Заголовок вкладки", default='', blank=True, null=True)
+    title = models.CharField(max_length=128, verbose_name="Заголовок вкладки", default='', blank=True, null=True)
     phone = models.CharField(max_length=32, verbose_name="ТЕлефон для всех мест на сайте", default='', blank=True, null=True)
     email = models.EmailField(verbose_name="Email для рассылки заявок", default='', blank=True, null=True)
     date = models.DateTimeField(default=None, verbose_name="Дата и время проведения", blank=True, null=True)
@@ -74,7 +74,7 @@ class Gallery(models.Model):
 
 class Faq(models.Model):
     order = models.SmallIntegerField(verbose_name="Порядок отображения", default=10, blank=True, null=True)
-    question = models.TextField(verbose_name="Вопрос", default='',)
+    question = models.CharField(verbose_name="Вопрос", default='', max_length=128)
     answer = models.TextField(verbose_name="Ответ", default='', blank=True, null=True)
 
     class Meta:
