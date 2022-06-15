@@ -67,11 +67,13 @@
                   Частые вопросы
                 </a>
               </li>
-              <li class="nav-item">
+              {% if settings.date %}
+                <li class="nav-item">
                 <a class="nav-link" href="" data-toggle="modal" data_id="1" data-target="#popup-center-form" style="cursor: pointer">
                   Регистрация
                 </a>
               </li>
+              {% endif %}
             </ul>
           </div>
         </div>
