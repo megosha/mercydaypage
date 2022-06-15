@@ -145,9 +145,11 @@
               <input id="eventDate" value="{{ date_string }}" hidden>
                 <div id="clock" class="time-count"></div>
             </div>
-            <button class="btn btn-common" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
+            {% if  settings.date %}
+              <button class="btn btn-common" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
                         <span><strong>Онлайн-регистрация</strong></span>
                     </button>
+              {% endif %}
           </div>
         </div>
       </div>
@@ -201,7 +203,7 @@
           <div class="col-md-6 col-lg-4 col-xs-12 work-counter-widget text-center">
             <div class="counter wow fadeInRight" data-wow-delay="0.6s">
               <div class="icon"><i class="lni-timer"></i></div>
-              <p>{{ settings.date|date:"j F Y" }}</p>
+              <p>{{ settings.date|date:"j M Y" }}</p>
               <span>В {{ settings.date|date:"G:i" }}</span>
             </div>
           </div>
@@ -309,9 +311,11 @@
 <!--              <h2 class="about-link text-center"><a href="#" class="about-link"><mark>+7 (913) 272 83-55</mark></a></h2>-->
               <h2 class="about-link text-center"><a href="#" class="">{{ settings.phone }}</a></h2>
                 <div class="text-center">
+                    {% if  settings.date %}
                     <button class="btn btn-common" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
                         <span><strong>Онлайн-регистрация</strong></span>
                     </button>
+                    {% endif %}
                  <a href="tel:+7 (913) 272 83-55" class="btn btn-second">
                         <span><strong>Позвонить</strong></span>
                     </a>
