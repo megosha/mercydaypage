@@ -1,216 +1,543 @@
-{% extends "base.html" %}
+{% load custom_tags %}
 {% load static %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <title>День милосердия - Благотворительный проект Барнаул</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" >
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="static/fonts/line-icons.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="static/css/slicknav.css">
+    <!-- Nivo Lightbox -->
+    <link rel="stylesheet" type="text/css" href="static/css/nivo-lightbox.css" >
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="static/css/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/modal.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/responsive.css">
+      <link rel="shortcut icon" href="static/img/logo.png" type="image/x-icon">
+
+
+  </head>
+  <body>
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+            </button>
+            <a href="/" class="navbar-brand"><img src="static/img/logo.png" alt=""></a>
+          </div>
+          <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <li class="nav-item active">
+                <a class="nav-link" href="#event-slides">
+                  О проекте
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#schedule">
+                  Программа
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">
+                  Контакты
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#faq">
+                  Частые вопросы
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="" data-toggle="modal" data_id="1" data-target="#popup-center-form" style="cursor: pointer">
+                  Регистрация
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Start -->
+        <ul class="mobile-menu">
+          <li>
+            <a class="page-scrool" href="#event-slides">О проекте</a>
+          </li>
+          <li>
+            <a class="page-scrool" href="#schedule">Программа</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#contact">Контакты</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#faq">Частые вопросы</a>
+          </li>
+          {% if  settings.date %}
+            <li>
+                <a class="page-scroll" href="#contact">Регистрация</a>
+            </li>
+          {% endif %}
+
+          {% if settings.phone %}
+              <li>
+                <a class="page-scroll" href="tel:{{ settings.phone }}">Позвонить</a>
+              </li>
+            {% endif %}
+        </ul>
+        <!-- Mobile Menu End -->
+
+      </nav>
+      <!-- Navbar End -->
+
+      <!-- Main Carousel Section Start -->
+      <div id="main-slide" class="carousel slide" data-ride="carousel">
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="static/img/slider/slide1.png" alt="First slide">
+            <div class="carousel-caption d-md-block">
+              <p class="fadeInUp wow" data-wow-delay=".6s">ДЕНЬ МИЛОСЕРДИЯ</p>
+              <h1 class="wow fadeInDown heading" data-wow-delay=".4s">БЛАГОТВОРИТЕЛЬНЫЙ ПРОЕКТ</h1>
+              <button class="btn btn-common" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
+                        <span>Регистрация</span>
+                    </button>
+              {% if settings.phone %}
+                <a href="tel:{{ settings.phone }}" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Позвонить</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Main Carousel Section End -->
+
+    </header>
+
+    <!-- Coundown Section Start -->
+    <section class="countdown-timer section-padding">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="heading-count">
+              <h2 class="wow fadeInDown" data-wow-delay="0.2s">До проекта осталось</h2>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row time-countdown justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+              <input id="eventDate" value="{{ date_string }}" hidden>
+                <div id="clock" class="time-count"></div>
+            </div>
+            <button class="btn btn-common" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
+                        <span><strong>Онлайн-регистрация</strong></span>
+                    </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Coundown Section End -->
+    <!-- Event Slides Section Start -->
+    <section id="event-slides" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title-header text-center">
+              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">О проекте</h1>
+              <p class="wow fadeInDown" data-wow-delay="0.2s">Благотворительный проект «День Милосердия»</p>
+            </div>
+          </div>
+          {% if settings.about_photo %}
+            <div class="col-md-6 col-lg-4 col-xs-12 wow fadeInRight" data-wow-delay="0.3s">
+              <div class="video">
+                <img class="img-fluid" src="/static/{{ settings.about_photo.url }}" width="100%" alt="">
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.3s">
+            <p class="intro-desc" style="margin-top: 4rem;">В рамках проекта людям, попавшим в трудную жизненную ситуацию и малоимущим семьям раздаются продуктовые пакеты. Каждый участник может бесплатно подобрать для себя одежду, а также получить консультацию психолога, консультацию для нарко- и алкозависимых людей.
+            </p>
+          </div>
+          {% else %}
+              <div class="col-md-12 col-lg-12 col-xs-12 wow fadeInLeft" data-wow-delay="0.3s">
+            <p class="intro-desc text-center">В рамках проекта людям, попавшим в трудную жизненную ситуацию и малоимущим семьям раздаются продуктовые пакеты. Каждый участник может бесплатно подобрать для себя одежду, а также получить консультацию психолога, консультацию для нарко- и алкозависимых людей.
+            </p>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </section>
+    <!-- Event Slides Section End -->
+       <!-- Counter Area Start-->
+    <section class="counter-section section-padding">
+      <div class="container">
+        <div class="row">
+          <!-- Counter Item -->
+          {% if settings.date %}
+            <div class="col-md-6 col-lg-4 col-xs-12 work-counter-widget text-center">
+            <div class="counter wow fadeInRight" data-wow-delay="0.3s">
+              <div class="icon"><i class="lni-map"></i></div>
+              <p>{{ settings.city }}</p>
+              <span>{{ settings.address }}</span>
+            </div>
+          </div>
+          <!-- Counter Item -->
+          <div class="col-md-6 col-lg-4 col-xs-12 work-counter-widget text-center">
+            <div class="counter wow fadeInRight" data-wow-delay="0.6s">
+              <div class="icon"><i class="lni-timer"></i></div>
+              <p>{{ settings.date|date:"j F Y" }}</p>
+              <span>В {{ settings.date|date:"G:i" }}</span>
+            </div>
+          </div>
+          <!-- Counter Item -->
+          <div class="col-md-6 col-lg-4 col-xs-12 work-counter-widget text-center">
+            <div class="counter wow fadeInRight" data-wow-delay="1.2s">
+              <div class="icon"><i class="lni-coffee-cup"></i></div>
+              <p>Бесплатный чай и кофе</p>
+              <span>В зоне ожидания</span>
+            </div>
+          </div>
+         {% else %}
+              <div class="col-md-12 col-lg-12 col-xs-12 work-counter-widget text-center">
+            <div class="counter wow fadeInRight" data-wow-delay="1.2s">
+              <div class="icon"><i class="lni-timer"></i></div>
+              <p>Дату и место проведения уточняйте по телефону</p>
+            </div>
+          </div>
+         {% endif %}
+        </div>
+      </div>
+    </section>
+    <!-- Counter Area End-->
+
+
+     <!-- Services Section Start -->
+    <section id="schedule" class="services section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title-header text-center">
+              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Программа мероприятия</h1>
+              <p class="wow fadeInDown" data-wow-delay="0.2s">Для участия обязательна предварительная регистрация.
+                <br>Подайте заявку по телефону или через форму онлайн-регистрации.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row services-wrapper">
+          <!-- Services item -->
+          <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
+            <div class="services-item wow fadeInDown" data-wow-delay="0.2s">
+              <div class="icon">
+                <i class="lni-check-mark-circle"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="#">Регистрация</a></h3>
+                <p class="about-link">Для участия в проекте обязательна предварительная регистрация по телефону:
+                    <a href="tel:{{ settings.phone }}">{{ settings.phone }}</a> или <a href="#contact">через онлайн-форму</a>
+                <br><br>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item -->
+          <div class="services-item col-md-6 col-lg-4 col-xs-12 padding-none">
+            <div class=" wow fadeInDown" data-wow-delay="0.4s">
+              <div class="icon">
+                <i class="lni-music"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="#">Музыкальная часть</a></h3>
+                <p>Программа мероприятия откроется в сопровождении живой музыки.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item -->
+          <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
+            <div class="services-item wow fadeInDown" data-wow-delay="0.6s">
+              <div class="icon">
+                <i class="lni-microphone"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="#">Выступление спикера</a></h3>
+                <p>Информационный блок на одну из тем: "Счастливая семья", "Как преодолеть трудности", "Выход из долгов", "Исцеление болезней души и человеческих отношений" и другие.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item -->
+          <div class="col-md-6 col-lg-4 col-xs-12 padding-none"></div>
+          <!-- Services item -->
+          <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
+            <div class="services-item wow fadeInDown" data-wow-delay="0.8s">
+              <div class="icon">
+                <i class="lni-gift"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="#">Раздача продуктовых наборов</a></h3>
+                <p>Мероприятие завершается раздачей продуктовых пакетов всем зарегистрировавшимся участникам проекта.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Services item -->
+          <div class="col-md-6 col-lg-4 col-xs-12 padding-none"></div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section End -->
+        <!-- Subscribe Area Start -->
+    <div id="contact" class="section-padding">
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-10 col-lg-7">
+            <div class="wow fadeInDown" data-wow-delay="0.3s">
+              <h2 class="text-center">Телефон для регистрации</h2>
+<!--              <h2 class="about-link text-center"><a href="#" class="about-link"><mark>+7 (913) 272 83-55</mark></a></h2>-->
+              <h2 class="about-link text-center"><a href="#" class="">{{ settings.phone }}</a></h2>
+                <div class="text-center">
+                    <button class="btn btn-common" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
+                        <span><strong>Онлайн-регистрация</strong></span>
+                    </button>
+                 <a href="tel:+7 (913) 272 83-55" class="btn btn-second">
+                        <span><strong>Позвонить</strong></span>
+                    </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Subscribe Area End -->
+
+    <!-- Ask Question Section Start -->
+    <section id="faq" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title-header text-center">
+              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Часто задаваемые вопросы</h1>
+              <p class="wow fadeInDown about-link" data-wow-delay="0.2s">Если у вас остались вопросы, звоните <a href="tel:{{ settings.phone }}">{{ settings.phone }}</a>. </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+            <div class="accordion">
+              {% for f1 in faqs_1 %}
+                <div class="card">
+                <div class="card-header" id="heading{{ f1.pk }}">
+                  <div class="header-title" data-toggle="collapse" data-target="#question{{ f1.pk }}" aria-expanded="true" aria-controls="collapse{{ f1.pk }}">
+                    <i class="lni-pencil"></i> {{ f1.question }}
+                  </div>
+                </div>
+                <div id="question{{ f1.pk }}" class="collapse" aria-labelledby="heading{{ f1.pk }}" data-parent="#question">
+                  <div class="card-body about-link-2">
+                    {{ f1.answer|str_custom|safe|linebreaksbr }}
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+            <div class="accordion">
+                {% for f2 in faqs_2 %}
+                <div class="card">
+                <div class="card-header" id="heading{{ f2.pk }}">
+                  <div class="header-title" data-toggle="collapse" data-target="#question{{ f2.pk }}" aria-expanded="true" aria-controls="collapse{{ f2.pk }}">
+                    <i class="lni-pencil"></i> {{ f2.question }}
+                  </div>
+                </div>
+                <div id="question{{ f2.pk }}" class="collapse" aria-labelledby="heading{{ f2.pk }}" data-parent="#question">
+                  <div class="card-body">
+                    {{ f2.answer|str_custom|safe|linebreaksbr }}
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Ask Question Section End -->
+
+    {% if photos %}
+    <!-- Gallary Section Start -->
+    <section id="gallery" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title-header text-center">
+              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Галерея</h1>
+              <p class="wow fadeInDown" data-wow-delay="0.2s">Фотографии с прошедших мероприятий</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            {% for photo in photos %}
+          <div class="col-md-6 col-sm-6 col-lg-4">
+            <div class="gallery-box">
+              <div class="img-thumb">
+                <img class="img-fluid" src="/static/{{ photo.photo.url }}" alt="">
+              </div>
+              <div class="overlay-box text-center">
+                <a class="lightbox" href="/static/{{ photo.photo.url }}">
+                  <i class="lni-plus"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+          </div>
+        </div>
+    </section>
+    <!-- Gallary Section End -->
+    {% endif %}
+    <!-- Map Section Start -->
+    <section id="google-map-area">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+<!--            <div id="conatiner-map"></div>-->
+            {{ settings.map|safe }}
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Map Section End -->
+
+    <!-- Footer Section Start -->
+    <footer class="footer-area section-padding">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-6 col-lg-12 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.2s">
+            <h4><img src="static/img/logo.png" alt=""></h4>
+              <p>{{ settings.requisites|linebreaksbr }}</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <div id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="site-info">
+                {{ settings.footer|safe }}
+            </div>      
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+    	<i class="lni-chevron-up"></i>
+    </a>
 
     <div id="preloader">
-        <div class="circles">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-        </div>
+      <div class="sk-circle">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
+      </div>
     </div>
-        <nav id="nav-center-logo-menu-social" class="navbar navbar-fixed-top dark">
-            <div class="container">
-                <div class="navbar-header" style="position: absolute; left:40px; z-index: 1000;">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" style="position: fixed; right:10%;z-index: 1000;"><span
-                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <div class="navbar-brand"><a href="/"><img src="../../static/images/logo2-light.png"
-                                                   alt="Logo" height="50px"
-                                                   class=""></a> </div>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-center">
-                        {%  for item in navblock.item.all %}
-                            {% if item.order != 0 %}
-                                <li class=""><a href="#{{ item.content }}"><span>{{ item.title }}</span></a></li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            <div class="nav-bg dark"></div>
-        </nav>
-    <div id="wrap">
-        <header id="header-slogan-border" class="pt-150 pb-150 text-center light" >
-            <div class="container">
-                <div class="row flex-md-vmiddle">
-                    <div class="">
-                        <div class="border-box padding-box mb-100 mt-100" style="border-color:#222;">
-                            <h1 class="my-5"><span class="text-uppercase">{{ block1.title|safe }}</span>
-                            </h1>
-                        </div>
-                        <p class="h3">{{ block1.content }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg" {% if block1.picture %}style="background-image: url('/static/{{ block1.picture.url }}');"{% endif %}></div>
-        </header>
-        <section id="desc-center-text" class="pt-125 pb-150 dark text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <h2 class="mb-25" data-aos="fade" data-aos-easing="linear" data-aos-duration="500"
-                            data-aos-delay="0" data-aos-once="true"><span
-                                class="text-uppercase"><strong>{{ block2.title }}</strong></span></h2>
-                        <h3 class="mb-75" data-aos="fade" data-aos-easing="linear" data-aos-duration="500"
-                            data-aos-delay="0" data-aos-once="true"><em>{{ date }}{% if place is not None %}<br>{{ place.content }}{% endif %}</em></h3>
-                        <p data-aos="fade" data-aos-easing="none" data-aos-duration="500" data-aos-delay="100"
-                           data-aos-once="true">
-                            {{ block2.content|safe }}
-                        </p>
-                    </div>
+    <div class="modal-container">
 
+        <section class="modal fade modal-confirm flex-center" id="popup-center-form" tabindex="-1" role="dialog"
+                 aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content text-center">
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-9"></div>
+                        <div class="col-1"><a type="button" class="btn modal-close" data-dismiss="modal" aria-label="Close" style="line-height: 0.2">
+                            <span aria-hidden="true">Закрыть</span></a></div>
+
+                      </div>
+
+                        <div class="col-12">
+
+                          <div class="section-title-header text-center mt-2">
+                            <h1 class="section-title modal-title">Заявка на участие в проекте</h1>
+                            <p>Заполните форму, чтобы наш администратор внёс Вас в список участников проекта.</p>
+                          </div>
+                        </div>
+                        <form role="form" method="post" action="registry" id="contactForm" name="contact-form" data-toggle="validator">
+                            {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-6 form-line">
+                      <div class="form-group">
+{#                        <input type="text" class="form-control" id="name" name="email" placeholder="Имя Фамилия" required data-error="Ведите ваше имя">#}
+                          {{ form.name }}
+                        <div class="help-block with-errors"></div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 form-line">
+                      <div class="form-group">
+{#                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Телефон" required data-error="Введите номер вашего телефона">#}
+                          {{ form.phone }}
+
+                        <div class="help-block with-errors"></div>
+                      </div>
+                    </div>
+                    </div>
+                      <div class="form-submit">
+                            <button type="submit" class="btn btn-common" id="form-submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Отправить</button>
+                          <span class="text-muted">* Сервис не передаёт введённые данные третьим лицам. Указанные данные используются только для обратной связи.</span>
+                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                    </div>
+                    <div class="bg"></div>
                 </div>
             </div>
-            <div class="bg" {% if block2.picture %}style="background-image: url('/static/{{ block2.picture.url }}');"{% endif %}></div>
         </section>
-        <section id="benefit-center-text-4col" class="pt-150 pb-150 text-center light">
-            <div class="container">
-                <h2 data-aos="fade" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0"
-                    data-aos-once="true">{{ block3.title }}</h2>
-                <p class="compressed-box-50 mb-75" data-aos="fade" data-aos-easing="none" data-aos-duration="500"
-                   data-aos-delay="0" data-aos-once="true">{{ block3.content }}</p>
-                <div class="row">
-                    {% for item in block3.item.all %}
-                    {% if item.order == 1 %}
-                    <div class="col-md-3">
-                        <div class="card card-simple" data-aos="stretch-left" data-aos-easing="linear"
-                             data-aos-duration="500" data-aos-delay="0" data-aos-once="true">
-                            <i class="card-icon icon-size-xl icon-register icon-color mb-25"></i>
-                            <h3 class="">{{ item.order }}. {{ item.title }}</h3>
-                            <p class="mb-25">{{ item.content|safe }}
-                                <a href="tel:{{ settings.phone }}">{{ settings.phone }}</a>
-                            </p>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% if item.order == 2 %}
-                    <div class="col-md-3">
-                        <div class="card card-simple" data-aos="stretch-left" data-aos-easing="linear"
-                             data-aos-duration="500" data-aos-delay="0" data-aos-once="true">
-                            <i class="card-icon icon-size-xl icon-music icon-color mb-25"></i>
-                            <h3 class="">{{ item.order }}. {{ item.title }}</h3>
-                            <p class="mb-25">{{ item.content }}</p>
-                        </div>
-                    </div>
-                        {% endif %}
-                        {% if item.order == 3 %}
-                    <div class="col-md-3">
-                        <div class="card card-simple" data-aos="stretch-right" data-aos-easing="linear"
-                             data-aos-duration="500" data-aos-delay="0" data-aos-once="true">
-                            <i class="card-icon icon-size-xl icon-user icon-color mb-25"></i>
-                            <h3 class="">{{ item.order }}. {{ item.title }}</h3>
-                            <p class="mb-25">{{ item.content }}</p>
-                        </div>
-                    </div>
-                        {% endif %}
-                        {% if item.order == 4 %}
-                    <div class="col-md-3">
-                        <div class="card card-simple" data-aos="stretch-right" data-aos-easing="linear"
-                             data-aos-duration="500" data-aos-delay="0" data-aos-once="true">
-                            <i class="card-icon icon-size-xl icon-gift2 icon-color mb-25"></i>
-                            <h3 class="">{{ item.order }}. {{ item.title }}</h3>
-                            <p class="mb-25">{{ item.content }}</p>
-                        </div>
-                    </div>
-                        {% endif %}
-                {% endfor %}
-                </div>
-                {% if btn %}
-                    <button class="btn btn-primary mt-50" type="button" data-toggle="modal" data_id="1" data-target="#popup-center-form">
-                        <span><strong>Зарегистрироваться</strong></span>
-                    </button>
-                {% endif %}
-            </div>
-            <div class="bg" {% if block3.picture %}style="background-image: url('/static/{{ block3.picture.url }}');"{% endif %}></div>
-        </section>
-        <section id="action-text-phone" class="pt-100 pb-100 light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-4">
-                        <h2 data-aos="stretch-left" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                            data-aos-delay="0">{{ block4.title }}</h2>
-                    </div>
-                    <div class="text-md-right">
-                        <h4 data-aos="stretch-right" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                            data-aos-delay="0">
-                            <mark class="phone"><a href="tel:{{ settings.phone }}"><strong>{{ settings.phone }}</strong></a></mark>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="bg parallax-bg skrollable-before" data-top-bottom="transform:translate3d(0px, 25%, 0px)"
-                 data-bottom-top="transform:translate3d(0px, -25%, 0px)"  {% if block4.picture %}style="background-image: url('/static/{{ block4.picture.url }}');"{% endif %}></div>
-        </section>
-        <section id="gallery-list-2col-mix" class="pt-100 pb-100 text-center light">
-            <div class="container">
-                <h3 data-aos="fade" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                    data-aos-delay="0">{{ block5.title }}</h3>
-                <h2 class="mb-75" data-aos="fade" data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                    data-aos-delay="0"><strong>{{ block5.subtitle }}</strong></h2>
-                <div class="row gallery">
-                            <div class="col-md-6">
-                                <a href="static/{{ photo1.picture.url }}" class="gallery-box" data-aos="stretch-left"
-                                   data-aos-easing="none" data-aos-once="true" data-aos-duration="500" data-aos-delay="0">
-                                    <i class="icon icon-size-m icon-plus"></i>
-                                    <span class="caption">{{ photo1.title }}</span>
-                                    <img src="static/{{ photo1.picture.url }}" alt="screen">
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="static/{{ photo2.picture.url }}" class="gallery-box" data-aos="stretch-right"
-                                   data-aos-easing="none" data-aos-once="true" data-aos-duration="500" data-aos-delay="0">
-                                    <i class="icon icon-size-m icon-plus"></i>
-                                    <span class="caption">{{ photo2.title }}</span>
-                                    <img src="static/{{ photo2.picture.url }}" alt="screen">
-                                </a>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="static/{{ photo3.picture.url }}" class="gallery-box" data-aos="stretch-left"
-                                       data-aos-easing="none" data-aos-once="true" data-aos-duration="500"
-                                       data-aos-delay="0">
-                                        <i class="icon icon-size-m icon-plus"></i>
-                                        <span class="caption">{{ photo3.title }}</span>
-                                        <img src="static/{{ photo3.picture.url }}" alt="screen">
-                                    </a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="static/{{ photo4.picture.url }}" class="gallery-box"
-                                       data-aos="stretch-right" data-aos-easing="none" data-aos-once="true"
-                                       data-aos-duration="500" data-aos-delay="0">
-                                        <i class="icon icon-size-m icon-plus"></i>
-                                        <span class="caption">{{ photo4.title }}</span>
-                                        <img src="static/{{ photo4.picture.url }}" alt="screen">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-            <div class="bg" {% if block5.picture %} style="background-image: url('/static/{{ block5.picture.url }}');"{% endif %}></div>
-        </section>
-        <footer id="footer-logo-share-subscribe" class="dark pt-100 pb-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                {{ block6.item.all.0.content|safe }}
-                            </div>
-                            <div class="col-sm-3">
-                                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A24fd9f3b42226978ad501fc28d72d8cada538c29e6a2d8e8e2b6db5ff6ceba60&amp;width=354&amp;height=252&amp;lang=ru_RU&amp;scroll=true"></script>
-                            </div>
-                            <div class="col-sm-1"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bg"></div>
-        </footer>
     </div>
-    <footer></footer>
-    {% include 'includes/modals.html' %}
-{% endblock %}
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="static/js/jquery-min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.countdown.min.js"></script>
+    <script src="static/js/jquery.nav.js"></script>
+    <script src="static/js/jquery.easing.min.js"></script>
+    <script src="static/js/wow.js"></script>
+    <script src="static/js/jquery.slicknav.js"></script>
+    <script src="static/js/nivo-lightbox.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="static/js/form-validator.min.js"></script>
+{#    <script src="static/js/contact-form-script.min.js"></script>#}
+    <script src="static/js/map.js"></script>
+    <script src="static/js/custom.js"></script>
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyCsa2Mi2HqyEcEnM1urFSIGEpvualYjwwM"></script>
+      
+  </body>
+</html>

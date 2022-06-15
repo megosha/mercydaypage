@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponseRedirect, JsonResponse
-from indexpage import models, helpers
+from indexpage import models, helpers, forms
 from django.core.mail import send_mail
 from django.conf import settings as sts
 
@@ -18,67 +18,63 @@ class Home(View):
 
 class Index(View):
     def get(self, request):
-        navblock = models.Block.objects.get(order=0)
-        block1 = models.Block.objects.get(order=1)
-        block2 = models.Block.objects.get(order=2)
-        block3 = models.Block.objects.get(order=3)
-        block4 = models.Block.objects.get(order=4)
-        block5 = models.Block.objects.get(order=5)
-        block6 = models.Block.objects.get(order=6)
-        photo1 = block5.item.filter(order=1).first()
-        photo2 = block5.item.filter(order=2).first()
-        photo3 = block5.item.filter(order=3).first()
-        photo4 = block5.item.filter(order=4).first()
-        settings = models.Settings.objects.get()
-        datefield = block2.item.filter(order=1).first()
-        datefield = datefield.content if datefield else ''
+        form = forms.Registartion()
+        settings = models.Settings.objects.filter().first()
+        photos = models.Gallery.objects.all().order_by('order')
+        faqs = models.Faq.objects.all().order_by('order')
+        faqs_count = faqs.count()
+        faqs_1 = faqs[:faqs_count/2]
+        faqs_2 = faqs[faqs_count/2:]
         date = settings.date
+        date_string = ''
         btn = False
         if date is not None:
+            date_string = date.strftime('%Y/%m/%d %H:%M:%S')
             btn = datetime.now() <= date
             if datetime.now() > date:
                 settings.date = None
                 settings.save()
 
-        if isinstance(settings.date, datetime):
-            date = f"{datefield} {settings.date.strftime('%d.%m.%Y %H:%M')}"
-            place = block2.item.filter(order=2).first()
-        else:
-            date = f"Дату и место проведения уточняйте по телефону"
-            place = None
-
-
-
-        context = {'settings':settings, 'navblock':navblock, 'block1': block1, 'block2': block2, 'block3': block3,
-                   'block4': block4, 'block5': block5, 'block6': block6, 'photo1':photo1, 'photo2':photo2,
-                   'photo3':photo3, 'photo4':photo4, "date":date, "place":place, 'btn':btn}
+        context = {'settings':settings, 'photos':photos, 'faqs_1':faqs_1, 'faqs_2':faqs_2,
+                   'date_string':date_string,'btn':btn, 'form':form}
         return render(request, 'includes/index.html', context)
 
 class Registry(View):
+    def get(self, request):
+        return HttpResponseRedirect('/')
+
+    def registry_render(self, request, result=None):
+        settings = models.Settings.objects.get()
+        context = {"result":result, "settings":settings}
+        return render(request, 'includes/registration.html', context)
+
     def post(self, request):
-        if "name" in request.POST and "tel" in request.POST:
+        form = forms.Registartion(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            phone = form.cleaned_data['phone']
             subject = 'Новая заявка на проект "День Милосердия"'
-            message = f'Заявка на участие в проекте "День Милосердия".\nФИО: {request.POST["name"]}' \
-                      f'\nТелефон: {request.POST["tel"]}'
+            message = f'Заявка на участие в проекте "День Милосердия".\nФИО: {name}' \
+                      f'\nТелефон: {phone}'
             settings = models.Settings.objects.get()
             email = settings.email
             filename = os.path.join(sts.BASE_DIR, 'registry_log.txt')
             if settings.date is not None and datetime.now().date() >= settings.date.date():
-                return JsonResponse({"error":"1"})
+                return self.registry_render(request, result=False)
             try:
                 send_mail(subject, message, sts.DEFAULT_FROM_EMAIL, (email,))
             except Exception as e:
                 print(e)
                 try:
                     with open(filename, 'a', encoding='utf-8') as inp:
-                        inp.write(str(datetime.now()) + str(request.POST["name"]) + str(request.POST["tel"]) + str(e) + "\n")
+                        inp.write(str(datetime.now()) + name + phone + str(e) + "\n")
                 except Exception as err:
                     print(err)
-                return JsonResponse({"error":"1"})
+                return self.registry_render(request, result=False)
             try:
                 with open(filename, 'a', encoding='utf-8') as inp:
                     inp.write(
-                        str(datetime.now()) + str(request.POST["name"]) + str(request.POST["tel"]) + "\n")
+                        str(datetime.now()) + name + phone + "\n")
             except Exception as err:
                 print(err)
             try:
@@ -86,15 +82,15 @@ class Registry(View):
                 fname = helpers.generate_filename(valid_date)
                 if not os.path.isfile(fname):
                     helpers.write_sheet(table=[],
-                                        addition=[f'{request.POST["name"]}', f'{request.POST["tel"]}'],
-                                        fname=fname )
+                                        addition=[f'{name}', f'{phone}'],
+                                        fname=fname)
                 else:
                     current_sheet = helpers.extract_sheet(fname=fname)
                     current_table = helpers.xl_to_list(current_sheet)
-                    helpers.write_sheet(current_table, [f'{request.POST["name"]}', f'{request.POST["tel"]}'], fname )
+                    helpers.write_sheet(current_table, [f'{name}', f'{phone}'], fname )
             except Exception as error:
                 print(error)
-            return JsonResponse({})
+            return self.registry_render(request, result=True)
         else:
-            return JsonResponse({})
+            return self.registry_render(request, result=False)
 

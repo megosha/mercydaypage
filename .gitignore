@@ -4,4 +4,7 @@ venv/
 db.sqlite3
 secret*
 *.log
-
+/static_old/
+/templates/includes_old/
+/static/images/images/about/
+/static/images/images/gallery/

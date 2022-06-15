@@ -29,6 +29,14 @@ class SettingsAdmin(admin.ModelAdmin):
     list_editable = ['phone', 'email', 'date']
     readonly_fields = 'registry',
 
+class FaqAdmin(admin.ModelAdmin):
+    list_display = ['order', 'question', 'answer']
+
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ['order']
+
 admin.site.register(models.Block, BlockAdmin)
 admin.site.register(models.Item, ItemAdmin)
 admin.site.register(models.Settings, SettingsAdmin)
+admin.site.register(models.Faq, FaqAdmin)
+admin.site.register(models.Gallery, GalleryAdmin)
